@@ -1,0 +1,25 @@
+{
+  "name": "دليل أمن المواقع الإلكترونية",
+  "short_name": "أمن المواقع",
+  "description": "دليل شامل لشرح ثغرات أمن المواقع الإلكترونية وطرق إصلاحها",
+  "icons": [
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#1e40af",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "scope": "/",
+  "start_url": "/",
+  "orientation": "portrait",
+  "lang": "ar",
+  "dir": "rtl"
+}
