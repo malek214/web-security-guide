@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import ProgressTracker from '@/components/ProgressTracker'
 
 const vulnerabilities = [
   { id: 'sql-injection', title: 'حقن SQL', icon: '💉', category: 'حقن' },
@@ -55,6 +56,10 @@ export default function VulnerabilitiesLayout({
           <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-4">
             <h2 className="font-bold text-lg">أنواع الثغرات</h2>
             <p className="text-sm text-blue-100">{vulnerabilities.length} ثغرة</p>
+          </div>
+
+          <div className="p-4 border-b border-gray-100">
+            <ProgressTracker />
           </div>
           
           {categories.map((category) => (

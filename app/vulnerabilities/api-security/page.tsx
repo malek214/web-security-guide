@@ -1,6 +1,9 @@
 import Link from 'next/link'
 import VideoSection from '@/components/VideoSection'
 import ToolsSection from '@/components/ToolsSection'
+import ShareButtons from '@/components/ShareButtons'
+import LabsSection from '@/components/LabsSection'
+import Quiz from '@/components/Quiz'
 
 export default function ApiSecurityPage() {
   return (
@@ -23,6 +26,10 @@ export default function ApiSecurityPage() {
           </p>
         </div>
       </section>
+
+      <div className="mb-6">
+        <ShareButtons title="أمن APIs" url={"https://web-security-guide.vercel.app/vulnerabilities/api-security"} />
+      </div>
 
       {/* Definition Section */}
       <section className="mb-12">
@@ -930,7 +937,9 @@ app.get('/api/users/:id', authenticate, async (req, res) => {
         </ul>
       </section>
 
+      <LabsSection slug="api-security" />
       <ToolsSection slug="api-security" />
+      <Quiz slug="api-security" />
       <VideoSection slug="api-security" />
 
       {/* Navigation Section */}

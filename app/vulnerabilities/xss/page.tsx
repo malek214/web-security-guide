@@ -1,6 +1,9 @@
 import Link from 'next/link'
 import VideoSection from '@/components/VideoSection'
 import ToolsSection from '@/components/ToolsSection'
+import ShareButtons from '@/components/ShareButtons'
+import LabsSection from '@/components/LabsSection'
+import Quiz from '@/components/Quiz'
 
 export default function XssPage() {
   return (
@@ -19,6 +22,10 @@ export default function XssPage() {
           </p>
         </div>
       </section>
+
+      <div className="mb-6">
+        <ShareButtons title="XSS - برمجة نصوص بين المواقع" url={"https://web-security-guide.vercel.app/vulnerabilities/xss"} />
+      </div>
 
       <section className="mb-12">
         <h2 className="text-3xl font-bold text-gray-900 mb-4">تعريف XSS</h2>
@@ -328,10 +335,15 @@ res.cookie('sessionId', sessionId, {
       </section>
 
       <section className="mb-12">
+        <LabsSection slug="xss" />
+      </section>
+
+      <section className="mb-12">
         <ToolsSection slug="xss" />
       </section>
 
       <section className="mb-12">
+        <Quiz slug="xss" />
         <VideoSection slug="xss" />
       </section>
 

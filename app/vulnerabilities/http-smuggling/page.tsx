@@ -1,6 +1,9 @@
 import Link from 'next/link'
 import VideoSection from '@/components/VideoSection'
 import ToolsSection from '@/components/ToolsSection'
+import ShareButtons from '@/components/ShareButtons'
+import LabsSection from '@/components/LabsSection'
+import Quiz from '@/components/Quiz'
 
 export default function HttpSmugglingPage() {
   return (
@@ -19,6 +22,10 @@ export default function HttpSmugglingPage() {
           </p>
         </div>
       </section>
+
+      <div className="mb-6">
+        <ShareButtons title="تهريب الطلبات" url={"https://web-security-guide.vercel.app/vulnerabilities/http-smuggling"} />
+      </div>
 
       <section className="mb-12">
         <h2 className="text-3xl font-bold text-gray-900 mb-4">تعريف HTTP Request Smuggling</h2>
@@ -454,10 +461,12 @@ SecRule &REQUEST_HEADERS:Transfer-Encoding "@gt 0" \\
       </section>
 
       <section className="mb-12">
+        <LabsSection slug="http-smuggling" />
         <ToolsSection slug="http-smuggling" />
       </section>
 
       <section className="mb-12">
+        <Quiz slug="http-smuggling" />
         <VideoSection slug="http-smuggling" />
       </section>
 

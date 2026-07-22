@@ -3,6 +3,9 @@
 import Link from "next/link";
 import VideoSection from '@/components/VideoSection'
 import ToolsSection from '@/components/ToolsSection'
+import ShareButtons from '@/components/ShareButtons'
+import LabsSection from '@/components/LabsSection'
+import Quiz from '@/components/Quiz'
 
 const SecurityMisconfigurationPage = () => {
   return (
@@ -46,6 +49,10 @@ const SecurityMisconfigurationPage = () => {
           </div>
         </div>
       </header>
+
+      <div className="mb-6">
+        <ShareButtons title="خطأ في التكوين الأمني" url={"https://web-security-guide.vercel.app/vulnerabilities/security-misconfiguration"} />
+      </div>
 
       {/* Main Content */}
       <main className="max-w-5xl mx-auto px-6 py-12 space-y-16">
@@ -807,7 +814,9 @@ module.exports = {
           </div>
         </section>
 
+        <LabsSection slug="security-misconfiguration" />
         <ToolsSection slug="security-misconfiguration" />
+        <Quiz slug="security-misconfiguration" />
         <VideoSection slug="security-misconfiguration" />
 
         {/* Navigation Links */}

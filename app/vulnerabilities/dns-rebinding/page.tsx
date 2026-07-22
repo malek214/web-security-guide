@@ -1,6 +1,9 @@
 import Link from "next/link";
 import VideoSection from '@/components/VideoSection'
 import ToolsSection from '@/components/ToolsSection'
+import ShareButtons from '@/components/ShareButtons'
+import LabsSection from '@/components/LabsSection'
+import Quiz from '@/components/Quiz'
 
 export default function DNSRebindingPage() {
   return (
@@ -19,6 +22,10 @@ export default function DNSRebindingPage() {
           </span>
         </div>
       </section>
+
+      <div className="max-w-4xl mx-auto px-6 mb-6">
+        <ShareButtons title="إعادة ربط DNS" url={"https://web-security-guide.vercel.app/vulnerabilities/dns-rebinding"} />
+      </div>
 
       <div className="max-w-4xl mx-auto px-6 py-12 space-y-12">
         {/* Definition */}
@@ -616,11 +623,13 @@ http://192.168.1.100:8080`}</pre>
 
         {/* Tools Section */}
         <section>
+          <LabsSection slug="dns-rebinding" />
           <ToolsSection slug="dns-rebinding" />
         </section>
 
         {/* Video Section */}
         <section>
+          <Quiz slug="dns-rebinding" />
           <VideoSection slug="dns-rebinding" />
         </section>
 

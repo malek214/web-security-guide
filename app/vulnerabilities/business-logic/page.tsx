@@ -1,6 +1,9 @@
 import Link from "next/link";
 import VideoSection from '@/components/VideoSection'
 import ToolsSection from '@/components/ToolsSection'
+import ShareButtons from '@/components/ShareButtons'
+import LabsSection from '@/components/LabsSection'
+import Quiz from '@/components/Quiz'
 
 export default function BusinessLogicPage() {
   return (
@@ -31,6 +34,10 @@ export default function BusinessLogicPage() {
           </p>
         </div>
       </header>
+
+      <div className="mb-6">
+        <ShareButtons title="ثغرات المنطق التجاري" url={"https://web-security-guide.vercel.app/vulnerabilities/business-logic"} />
+      </div>
 
       <section className="mb-12">
         <h2 className="text-3xl font-bold text-gray-900 mb-4">
@@ -894,10 +901,12 @@ app.post('/api/payment', async (req, res) => {
       </section>
 
       <section className="mb-12">
+        <LabsSection slug="business-logic" />
         <ToolsSection slug="business-logic" />
       </section>
 
       <section className="mb-12">
+        <Quiz slug="business-logic" />
         <VideoSection slug="business-logic" />
       </section>
 

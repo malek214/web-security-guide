@@ -1,6 +1,9 @@
 import Link from "next/link";
 import VideoSection from '@/components/VideoSection'
 import ToolsSection from '@/components/ToolsSection'
+import ShareButtons from '@/components/ShareButtons'
+import LabsSection from '@/components/LabsSection'
+import Quiz from '@/components/Quiz'
 
 export const metadata = {
   title: "الكشف عن المعلومات - Information Disclosure | دليل أمن الويب",
@@ -445,6 +448,10 @@ export default function InformationDisclosurePage() {
           </p>
         </header>
 
+        <div className="mb-6">
+          <ShareButtons title="الكشف عن المعلومات" url={"https://web-security-guide.vercel.app/vulnerabilities/information-disclosure"} />
+        </div>
+
         {/* Definition Section */}
         <section className="mb-16">
           <h2 className="text-3xl font-bold mb-6 text-emerald-400">
@@ -848,11 +855,13 @@ export default function InformationDisclosurePage() {
 
         {/* Tools Section */}
         <section className="mb-16">
+          <LabsSection slug="information-disclosure" />
           <ToolsSection slug="information-disclosure" />
         </section>
 
         {/* Video Section */}
         <section className="mb-16">
+          <Quiz slug="information-disclosure" />
           <VideoSection slug="information-disclosure" />
         </section>
 

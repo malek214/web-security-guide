@@ -1,6 +1,9 @@
 import Link from 'next/link'
 import VideoSection from '@/components/VideoSection'
 import ToolsSection from '@/components/ToolsSection'
+import LabsSection from '@/components/LabsSection'
+import Quiz from '@/components/Quiz'
+import ShareButtons from '@/components/ShareButtons'
 
 export default function OpenRedirectPage() {
   return (
@@ -19,6 +22,10 @@ export default function OpenRedirectPage() {
           </p>
         </div>
       </section>
+
+      <div className="mb-6">
+        <ShareButtons title="Open Redirect" url={"https://web-security-guide.vercel.app/vulnerabilities/open-redirect"} />
+      </div>
 
       <section className="mb-12">
         <h2 className="text-3xl font-bold text-gray-900 mb-4">تعريف إعادة التوجيه المفتوحة</h2>
@@ -488,7 +495,9 @@ app.get('/redirect', csrfProtection, (req, res) => {
         </div>
       </section>
 
+      <LabsSection slug="open-redirect" />
       <ToolsSection slug="open-redirect" />
+      <Quiz slug="open-redirect" />
       <VideoSection slug="open-redirect" />
     </div>
   )

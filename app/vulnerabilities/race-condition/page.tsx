@@ -1,6 +1,9 @@
 import Link from "next/link";
 import VideoSection from '@/components/VideoSection'
 import ToolsSection from '@/components/ToolsSection'
+import ShareButtons from '@/components/ShareButtons'
+import LabsSection from '@/components/LabsSection'
+import Quiz from '@/components/Quiz'
 
 export default function RaceConditionPage() {
   return (
@@ -25,6 +28,10 @@ export default function RaceConditionPage() {
           </p>
         </div>
       </header>
+
+      <div className="mb-6">
+        <ShareButtons title="حالة السباق" url={"https://web-security-guide.vercel.app/vulnerabilities/race-condition"} />
+      </div>
 
       <section className="mb-12">
         <h2 className="text-3xl font-bold text-gray-900 mb-4">تعريف Race Condition</h2>
@@ -682,10 +689,12 @@ $$ LANGUAGE plpgsql;`}
       </section>
 
       <section className="mb-12">
+        <LabsSection slug="race-condition" />
         <ToolsSection slug="race-condition" />
       </section>
 
       <section className="mb-12">
+        <Quiz slug="race-condition" />
         <VideoSection slug="race-condition" />
       </section>
 

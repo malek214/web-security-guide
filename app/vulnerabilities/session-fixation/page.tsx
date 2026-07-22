@@ -1,6 +1,9 @@
 import Link from 'next/link'
 import VideoSection from '@/components/VideoSection'
 import ToolsSection from '@/components/ToolsSection'
+import ShareButtons from '@/components/ShareButtons'
+import LabsSection from '@/components/LabsSection'
+import Quiz from '@/components/Quiz'
 
 export default function SessionFixationPage() {
   return (
@@ -19,6 +22,10 @@ export default function SessionFixationPage() {
           </p>
         </div>
       </section>
+
+      <div className="mb-6">
+        <ShareButtons title="تثبيت الجلسة" url={"https://web-security-guide.vercel.app/vulnerabilities/session-fixation"} />
+      </div>
 
       <section className="mb-12">
         <h2 className="text-3xl font-bold text-gray-900 mb-4">تعريف تثبيت الجلسة</h2>
@@ -344,7 +351,9 @@ app.use((req, res, next) => {
         </div>
       </section>
 
+      <LabsSection slug="session-fixation" />
       <ToolsSection slug="session-fixation" />
+      <Quiz slug="session-fixation" />
       <VideoSection slug="session-fixation" />
     </div>
   )

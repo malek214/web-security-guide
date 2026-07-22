@@ -409,3 +409,8 @@ body {
 .prose tr:hover td {
   background: #f8fafc;
 }
+
+@media print {
+  header, footer, nav, .no-print { display: none !important; }
+  main { max-width: 100% !important; padding: 0 !important; }
+}

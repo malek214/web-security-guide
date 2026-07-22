@@ -1,6 +1,9 @@
 import Link from 'next/link'
 import VideoSection from '@/components/VideoSection'
 import ToolsSection from '@/components/ToolsSection'
+import ShareButtons from '@/components/ShareButtons'
+import LabsSection from '@/components/LabsSection'
+import Quiz from '@/components/Quiz'
 
 export default function InsecureDeserializationPage() {
   return (
@@ -19,6 +22,10 @@ export default function InsecureDeserializationPage() {
           </p>
         </div>
       </section>
+
+      <div className="mb-6">
+        <ShareButtons title="عدم آمان إعادة التحويل" url={"https://web-security-guide.vercel.app/vulnerabilities/insecure-deserialization"} />
+      </div>
 
       <section className="mb-12">
         <h2 className="text-3xl font-bold text-gray-900 mb-4">تعريف عدم آمان إعادة التحويل</h2>
@@ -469,7 +476,9 @@ safe_data = SafeUnpickler(io.BytesIO(data)).load()`}
         </div>
       </section>
 
+      <LabsSection slug="insecure-deserialization" />
       <ToolsSection slug="insecure-deserialization" />
+      <Quiz slug="insecure-deserialization" />
       <VideoSection slug="insecure-deserialization" />
     </div>
   )

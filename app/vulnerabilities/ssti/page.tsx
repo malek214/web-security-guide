@@ -1,6 +1,9 @@
 import Link from 'next/link'
 import VideoSection from '@/components/VideoSection'
 import ToolsSection from '@/components/ToolsSection'
+import ShareButtons from '@/components/ShareButtons'
+import LabsSection from '@/components/LabsSection'
+import Quiz from '@/components/Quiz'
 
 export default function SSTIPage() {
   return (
@@ -23,6 +26,10 @@ export default function SSTIPage() {
           <p className="text-red-700 font-semibold mb-0">&#x26A0; مستوى الخطورة: خطيرة جداً</p>
         </div>
       </header>
+
+      <div className="mb-6">
+        <ShareButtons title="SSTI - حقن قوالب الخادم" url={"https://web-security-guide.vercel.app/vulnerabilities/ssti"} />
+      </div>
 
       <section className="mb-12">
         <h2 className="text-3xl font-bold text-gray-900 mb-4">تعريف SSTI</h2>
@@ -131,9 +138,14 @@ result = template.render(name=user_input)`}
       </section>
 
       <section className="mb-12">
+        <LabsSection slug="ssti" />
+      </section>
+
+      <section className="mb-12">
         <ToolsSection slug="ssti" />
       </section>
 
+      <Quiz slug="ssti" />
       <VideoSection slug="ssti" />
 
       <section className="mb-12">

@@ -1,6 +1,9 @@
 import Link from 'next/link';
 import VideoSection from '@/components/VideoSection'
 import ToolsSection from '@/components/ToolsSection'
+import ShareButtons from '@/components/ShareButtons'
+import LabsSection from '@/components/LabsSection'
+import Quiz from '@/components/Quiz'
 
 export const metadata = {
   title: 'ثغرات OAuth - OAuth Vulnerabilities | دليل أمن الويب',
@@ -27,6 +30,10 @@ export default function OAuthVulnerabilitiesPage() {
           </p>
         </div>
       </header>
+
+      <div className="mb-6">
+        <ShareButtons title="OAuth Vulnerabilities" url={"https://web-security-guide.vercel.app/vulnerabilities/oauth"} />
+      </div>
 
       <main className="container mx-auto px-4 max-w-4xl py-12">
         {/* Table of Contents */}
@@ -1183,7 +1190,9 @@ app.post('/api/auth/logout', async (req, res) => {
           </div>
         </section>
 
+        <LabsSection slug="oauth" />
         <ToolsSection slug="oauth" />
+        <Quiz slug="oauth" />
         <VideoSection slug="oauth" />
 
         {/* Navigation */}

@@ -1,6 +1,9 @@
 import Link from 'next/link'
 import VideoSection from '@/components/VideoSection'
 import ToolsSection from '@/components/ToolsSection'
+import ShareButtons from '@/components/ShareButtons'
+import LabsSection from '@/components/LabsSection'
+import Quiz from '@/components/Quiz'
 
 export default function DenialOfServicePage() {
   return (
@@ -23,6 +26,10 @@ export default function DenialOfServicePage() {
           <p className="text-red-700 font-semibold mb-0">&#x26A0; مستوى الخطورة: عالية</p>
         </div>
       </header>
+
+      <div className="mb-6">
+        <ShareButtons title="حجب الخدمة" url={"https://web-security-guide.vercel.app/vulnerabilities/denial-of-service"} />
+      </div>
 
       <section className="mb-12">
         <h2 className="text-3xl font-bold text-gray-900 mb-4">تعريف DoS</h2>
@@ -133,10 +140,12 @@ app.use(express.json({ limit: '10kb' }));`}
       </section>
 
       <section className="mb-12">
+        <LabsSection slug="denial-of-service" />
         <ToolsSection slug="denial-of-service" />
       </section>
 
       <section className="mb-12">
+        <Quiz slug="denial-of-service" />
         <VideoSection slug="denial-of-service" />
       </section>
 

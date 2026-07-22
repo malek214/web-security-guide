@@ -70,6 +70,9 @@ export default function RootLayout({
                   <a href="/vulnerabilities/sql-injection" className="hover:text-primary-400 transition-colors">الثغرات</a>
                   <a href="/owasp-top-10" className="hover:text-primary-400 transition-colors">OWASP</a>
                   <a href="/bug-bounty" className="hover:text-primary-400 transition-colors">Bug Bounty</a>
+                  <a href="/blog" className="hover:text-primary-400 transition-colors">المدونة</a>
+                  <a href="/interview-questions" className="hover:text-primary-400 transition-colors">أسئلة المقابلات</a>
+                  <a href="/ctf" className="hover:text-primary-400 transition-colors">تحديات CTF</a>
                   <a href="/career-path" className="hover:text-primary-400 transition-colors">المسار الوظيفي</a>
                   <a href="/glossary" className="hover:text-primary-400 transition-colors">القاموس</a>
                 </div>
@@ -108,6 +111,9 @@ export default function RootLayout({
                   <ul className="space-y-2 text-gray-400">
                     <li><a href="/best-practices" className="hover:text-white transition-colors">أفضل الممارسات</a></li>
                     <li><a href="/resources" className="hover:text-white transition-colors">مصادر تعليمية</a></li>
+                    <li><a href="/blog" className="hover:text-white transition-colors">المدونة</a></li>
+                    <li><a href="/interview-questions" className="hover:text-white transition-colors">أسئلة المقابلات</a></li>
+                    <li><a href="/ctf" className="hover:text-white transition-colors">تحديات CTF</a></li>
                     <li><a href="/faq" className="hover:text-white transition-colors">أسئلة متكررة</a></li>
                   </ul>
                 </div>

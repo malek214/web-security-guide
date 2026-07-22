@@ -1,6 +1,9 @@
 import Link from "next/link";
 import VideoSection from '@/components/VideoSection'
 import ToolsSection from '@/components/ToolsSection'
+import ShareButtons from '@/components/ShareButtons'
+import LabsSection from '@/components/LabsSection'
+import Quiz from '@/components/Quiz'
 
 export default function CSRFPage() {
   return (
@@ -25,6 +28,10 @@ export default function CSRFPage() {
           </p>
         </div>
       </header>
+
+      <div className="mb-6">
+        <ShareButtons title="CSRF - تزوير الطلبات" url={"https://web-security-guide.vercel.app/vulnerabilities/csrf"} />
+      </div>
 
       <section className="mb-12">
         <h2 className="text-3xl font-bold text-gray-900 mb-4">تعريف CSRF</h2>
@@ -278,10 +285,15 @@ app.use('/api', checkOrigin, apiRoutes);`}
       </section>
 
       <section className="mb-12">
+        <LabsSection slug="csrf" />
+      </section>
+
+      <section className="mb-12">
         <ToolsSection slug="csrf" />
       </section>
 
       <section className="mb-12">
+        <Quiz slug="csrf" />
         <VideoSection slug="csrf" />
       </section>
 

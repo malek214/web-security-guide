@@ -1,6 +1,9 @@
 import Link from 'next/link'
 import VideoSection from '@/components/VideoSection'
 import ToolsSection from '@/components/ToolsSection'
+import ShareButtons from '@/components/ShareButtons'
+import LabsSection from '@/components/LabsSection'
+import Quiz from '@/components/Quiz'
 
 export default function PrototypePollutionPage() {
   return (
@@ -23,6 +26,10 @@ export default function PrototypePollutionPage() {
           <p className="text-yellow-700 font-semibold mb-0">&#x26A0; مستوى الخطورة: متوسطة إلى عالية</p>
         </div>
       </header>
+
+      <div className="mb-6">
+        <ShareButtons title="تلوث النموذج البرمجي" url={"https://web-security-guide.vercel.app/vulnerabilities/prototype-pollution"} />
+      </div>
 
       <section className="mb-12">
         <h2 className="text-3xl font-bold text-gray-900 mb-4">تعريف Prototype Pollution</h2>
@@ -140,10 +147,12 @@ const merge = (target, source) => {
       </section>
 
       <section className="mb-12">
+        <LabsSection slug="prototype-pollution" />
         <ToolsSection slug="prototype-pollution" />
       </section>
 
       <section className="mb-12">
+        <Quiz slug="prototype-pollution" />
         <VideoSection slug="prototype-pollution" />
       </section>
 

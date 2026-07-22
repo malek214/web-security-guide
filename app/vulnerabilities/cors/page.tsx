@@ -1,6 +1,9 @@
 import Link from 'next/link'
 import VideoSection from '@/components/VideoSection'
 import ToolsSection from '@/components/ToolsSection'
+import LabsSection from '@/components/LabsSection'
+import Quiz from '@/components/Quiz'
+import ShareButtons from '@/components/ShareButtons'
 
 export default function CorsPage() {
   return (
@@ -23,6 +26,10 @@ export default function CorsPage() {
           </p>
         </div>
       </section>
+
+      <div className="mb-6">
+        <ShareButtons title="CORS Misconfiguration" url={"https://web-security-guide.vercel.app/vulnerabilities/cors"} />
+      </div>
 
       {/* Definition Section */}
       <section className="mb-12">
@@ -765,7 +772,9 @@ if (!isSecureOrigin(origin)) {
         </blockquote>
       </section>
 
+      <LabsSection slug="cors" />
       <ToolsSection slug="cors" />
+      <Quiz slug="cors" />
       <VideoSection slug="cors" />
 
       {/* Navigation Section */}

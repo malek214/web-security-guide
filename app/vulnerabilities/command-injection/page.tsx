@@ -1,6 +1,9 @@
 import Link from 'next/link'
 import VideoSection from '@/components/VideoSection'
 import ToolsSection from '@/components/ToolsSection'
+import ShareButtons from '@/components/ShareButtons'
+import LabsSection from '@/components/LabsSection'
+import Quiz from '@/components/Quiz'
 
 export default function CommandInjectionPage() {
   return (
@@ -23,6 +26,10 @@ export default function CommandInjectionPage() {
           </p>
         </div>
       </section>
+
+      <div className="mb-6">
+        <ShareButtons title="حقن أوامر النظام" url={"https://web-security-guide.vercel.app/vulnerabilities/command-injection"} />
+      </div>
 
       {/* Definition Section */}
       <section className="mb-12">
@@ -649,10 +656,15 @@ docker run --rm -it \\
       </section>
 
       <section className="mb-12">
+        <LabsSection slug="command-injection" />
+      </section>
+
+      <section className="mb-12">
         <ToolsSection slug="command-injection" />
       </section>
 
       <section className="mb-12">
+        <Quiz slug="command-injection" />
         <VideoSection slug="command-injection" />
       </section>
 

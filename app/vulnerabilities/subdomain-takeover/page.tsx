@@ -1,6 +1,9 @@
 import Link from "next/link";
 import VideoSection from '@/components/VideoSection'
 import ToolsSection from '@/components/ToolsSection'
+import ShareButtons from '@/components/ShareButtons'
+import LabsSection from '@/components/LabsSection'
+import Quiz from '@/components/Quiz'
 
 export default function SubdomainTakeoverPage() {
   return (
@@ -32,6 +35,10 @@ export default function SubdomainTakeoverPage() {
             خطورة: عالية
           </div>
         </header>
+
+        <div className="mb-6">
+          <ShareButtons title="استيلاء على النطاقات" url={"https://web-security-guide.vercel.app/vulnerabilities/subdomain-takeover"} />
+        </div>
 
         {/* Definition */}
         <section className="mb-12">
@@ -525,11 +532,13 @@ curl -I https://old-app.example.com
 
         {/* Tools Section */}
         <section className="mb-12">
+          <LabsSection slug="subdomain-takeover" />
           <ToolsSection slug="subdomain-takeover" />
         </section>
 
         {/* Video Section */}
         <section className="mb-12">
+          <Quiz slug="subdomain-takeover" />
           <VideoSection slug="subdomain-takeover" />
         </section>
 

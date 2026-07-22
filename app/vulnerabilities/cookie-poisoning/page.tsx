@@ -1,6 +1,9 @@
 import Link from "next/link";
 import VideoSection from '@/components/VideoSection'
 import ToolsSection from '@/components/ToolsSection'
+import ShareButtons from '@/components/ShareButtons'
+import LabsSection from '@/components/LabsSection'
+import Quiz from '@/components/Quiz'
 
 export const metadata = {
   title: "تسميم الكوكيز - Cookie Poisoning | دليل أمن الويب",
@@ -119,6 +122,10 @@ export default function CookiePoisoningPage() {
             لاستهداف الجلسات والمستخدمين والتحكم في سلوك التطبيق
           </p>
         </header>
+
+        <div className="mb-6">
+          <ShareButtons title="تسميم الكوكيز" url={"https://web-security-guide.vercel.app/vulnerabilities/cookie-poisoning"} />
+        </div>
 
         {/* Table of Contents */}
         <nav className="mb-12 rounded-lg border border-gray-800 bg-gray-900/50 p-6">
@@ -830,7 +837,9 @@ sameSite: "none"    // الكوكيز تُرسل مع كل الطلبات (يج�
           </div>
         </section>
 
+        <LabsSection slug="cookie-poisoning" />
         <ToolsSection slug="cookie-poisoning" />
+        <Quiz slug="cookie-poisoning" />
         <VideoSection slug="cookie-poisoning" />
 
         {/* Navigation */}

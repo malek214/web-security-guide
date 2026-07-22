@@ -1,6 +1,9 @@
 import Link from "next/link";
 import VideoSection from '@/components/VideoSection'
 import ToolsSection from '@/components/ToolsSection'
+import ShareButtons from '@/components/ShareButtons'
+import LabsSection from '@/components/LabsSection'
+import Quiz from '@/components/Quiz'
 
 export const metadata = {
   title: "خطأ في التحكم بالوصول - Broken Access Control | دليل أمن الويب",
@@ -167,6 +170,10 @@ export default function BrokenAccessControlPage() {
           </p>
         </div>
       </section>
+
+      <div className="mb-6">
+        <ShareButtons title="خطأ في التحكم بالوصول" url={"https://web-security-guide.vercel.app/vulnerabilities/broken-access-control"} />
+      </div>
 
       {/* Definition */}
       <section className="py-12 px-4">
@@ -414,6 +421,7 @@ res.json(invoice);`}
       {/* Tools Section */}
       <section className="py-12 px-4">
         <div className="max-w-4xl mx-auto">
+          <LabsSection slug="broken-access-control" />
           <ToolsSection slug="broken-access-control" />
         </div>
       </section>
@@ -421,7 +429,8 @@ res.json(invoice);`}
       {/* Video Section */}
       <section className="py-12 px-4">
         <div className="max-w-4xl mx-auto">
-          <VideoSection slug="broken-access-control" />
+           <Quiz slug="broken-access-control" />
+           <VideoSection slug="broken-access-control" />
         </div>
       </section>
 

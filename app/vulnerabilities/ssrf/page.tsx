@@ -1,6 +1,9 @@
 import Link from 'next/link'
 import VideoSection from '@/components/VideoSection'
 import ToolsSection from '@/components/ToolsSection'
+import ShareButtons from '@/components/ShareButtons'
+import LabsSection from '@/components/LabsSection'
+import Quiz from '@/components/Quiz'
 
 export default function SsrfPage() {
   return (
@@ -23,6 +26,10 @@ export default function SsrfPage() {
           </p>
         </div>
       </section>
+
+      <div className="mb-6">
+        <ShareButtons title="SSRF - تزوير الطلبات من جانب الخادم" url={"https://web-security-guide.vercel.app/vulnerabilities/ssrf"} />
+      </div>
 
       {/* Definition Section */}
       <section className="mb-12">
@@ -670,10 +677,15 @@ def resolve_and_validate(hostname):
       </section>
 
       <section className="mb-12">
+        <LabsSection slug="ssrf" />
+      </section>
+
+      <section className="mb-12">
         <ToolsSection slug="ssrf" />
       </section>
 
       <section className="mb-12">
+        <Quiz slug="ssrf" />
         <VideoSection slug="ssrf" />
       </section>
 

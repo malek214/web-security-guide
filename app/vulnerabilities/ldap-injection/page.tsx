@@ -1,6 +1,9 @@
 import Link from 'next/link'
 import VideoSection from '@/components/VideoSection'
 import ToolsSection from '@/components/ToolsSection'
+import ShareButtons from '@/components/ShareButtons'
+import LabsSection from '@/components/LabsSection'
+import Quiz from '@/components/Quiz'
 
 export default function LdapInjectionPage() {
   return (
@@ -23,6 +26,10 @@ export default function LdapInjectionPage() {
           </p>
         </div>
       </section>
+
+      <div className="mb-6">
+        <ShareButtons title="LDAP Injection" url={"https://web-security-guide.vercel.app/vulnerabilities/ldap-injection"} />
+      </div>
 
       {/* Definition Section */}
       <section className="mb-12">
@@ -669,9 +676,14 @@ using (var searcher = new DirectorySearcher(entry))
       </section>
 
       <section className="mb-12">
+        <LabsSection slug="ldap-injection" />
+      </section>
+
+      <section className="mb-12">
         <ToolsSection slug="ldap-injection" />
       </section>
 
+      <Quiz slug="ldap-injection" />
       <VideoSection slug="ldap-injection" />
 
       {/* Navigation Section */}

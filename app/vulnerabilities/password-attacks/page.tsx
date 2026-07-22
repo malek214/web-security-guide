@@ -1,6 +1,9 @@
 import Link from 'next/link'
 import VideoSection from '@/components/VideoSection'
 import ToolsSection from '@/components/ToolsSection'
+import ShareButtons from '@/components/ShareButtons'
+import LabsSection from '@/components/LabsSection'
+import Quiz from '@/components/Quiz'
 
 export default function PasswordAttacksPage() {
   return (
@@ -23,6 +26,10 @@ export default function PasswordAttacksPage() {
           </p>
         </div>
       </section>
+
+      <div className="mb-6">
+        <ShareButtons title="هجمات كلمات المرور" url={"https://web-security-guide.vercel.app/vulnerabilities/password-attacks"} />
+      </div>
 
       {/* Definition Section */}
       <section className="mb-12">
@@ -873,7 +880,9 @@ async function authenticate(username, password) {
         </div>
       </section>
 
+      <LabsSection slug="password-attacks" />
       <ToolsSection slug="password-attacks" />
+      <Quiz slug="password-attacks" />
       <VideoSection slug="password-attacks" />
 
       {/* Navigation Section */}

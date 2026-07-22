@@ -1,6 +1,9 @@
 import Link from 'next/link'
 import VideoSection from '@/components/VideoSection'
 import ToolsSection from '@/components/ToolsSection'
+import ShareButtons from '@/components/ShareButtons'
+import LabsSection from '@/components/LabsSection'
+import Quiz from '@/components/Quiz'
 
 export default function XxePage() {
   return (
@@ -23,6 +26,10 @@ export default function XxePage() {
           </p>
         </div>
       </section>
+
+      <div className="mb-6">
+        <ShareButtons title="XXE - XML External Entity" url={"https://web-security-guide.vercel.app/vulnerabilities/xxe"} />
+      </div>
 
       {/* Definition Section */}
       <section className="mb-12">
@@ -658,9 +665,14 @@ app.post('/api/user', (req, res) => {
       </section>
 
       <section className="mb-12">
+        <LabsSection slug="xxe" />
+      </section>
+
+      <section className="mb-12">
         <ToolsSection slug="xxe" />
       </section>
 
+      <Quiz slug="xxe" />
       <VideoSection slug="xxe" />
 
       {/* Navigation Section */}

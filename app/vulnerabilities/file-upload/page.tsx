@@ -1,6 +1,9 @@
 import Link from 'next/link'
 import VideoSection from '@/components/VideoSection'
 import ToolsSection from '@/components/ToolsSection'
+import ShareButtons from '@/components/ShareButtons'
+import LabsSection from '@/components/LabsSection'
+import Quiz from '@/components/Quiz'
 
 export default function FileUploadPage() {
   return (
@@ -23,6 +26,10 @@ export default function FileUploadPage() {
           </p>
         </div>
       </section>
+
+      <div className="mb-6">
+        <ShareButtons title="ثغرات رفع الملفات" url={"https://web-security-guide.vercel.app/vulnerabilities/file-upload"} />
+      </div>
 
       {/* Definition */}
       <section className="mb-12">
@@ -124,8 +131,10 @@ move_uploaded_file($_FILES["file"]["tmp_name"], $target);
         </ul>
       </section>
 
+      <LabsSection slug="file-upload" />
       <ToolsSection slug="file-upload" />
 
+      <Quiz slug="file-upload" />
       <VideoSection slug="file-upload" />
 
       {/* Navigation */}

@@ -1,6 +1,9 @@
 import Link from 'next/link'
 import VideoSection from '@/components/VideoSection'
 import ToolsSection from '@/components/ToolsSection'
+import ShareButtons from '@/components/ShareButtons'
+import LabsSection from '@/components/LabsSection'
+import Quiz from '@/components/Quiz'
 
 export default function CRLFInjectionPage() {
   return (
@@ -23,6 +26,10 @@ export default function CRLFInjectionPage() {
           <p className="text-yellow-700 font-semibold mb-0">&#x26A0; مستوى الخطورة: متوسطة إلى عالية</p>
         </div>
       </header>
+
+      <div className="mb-6">
+        <ShareButtons title="CRLF Injection" url={"https://web-security-guide.vercel.app/vulnerabilities/crlf-injection"} />
+      </div>
 
       <section className="mb-12">
         <h2 className="text-3xl font-bold text-gray-900 mb-4">تعريف CRLF Injection</h2>
@@ -108,9 +115,14 @@ app.use(helmet());`}
       </section>
 
       <section className="mb-12">
+        <LabsSection slug="crlf-injection" />
+      </section>
+
+      <section className="mb-12">
         <ToolsSection slug="crlf-injection" />
       </section>
 
+      <Quiz slug="crlf-injection" />
       <VideoSection slug="crlf-injection" />
 
       <section className="mb-12">

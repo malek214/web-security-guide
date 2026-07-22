@@ -1,6 +1,9 @@
 import Link from 'next/link'
 import VideoSection from '@/components/VideoSection'
 import ToolsSection from '@/components/ToolsSection'
+import ShareButtons from '@/components/ShareButtons'
+import LabsSection from '@/components/LabsSection'
+import Quiz from '@/components/Quiz'
 
 export default function LfiPage() {
   return (
@@ -23,6 +26,10 @@ export default function LfiPage() {
           </p>
         </div>
       </section>
+
+      <div className="mb-6">
+        <ShareButtons title="LFI - تضمين ملفات محلية" url={"https://web-security-guide.vercel.app/vulnerabilities/lfi"} />
+      </div>
 
       {/* Definition Section */}
       <section className="mb-12">
@@ -632,9 +639,14 @@ SecRule ARGS|QUERY_STRING "@rx (etc\/passwd|etc\/shadow)" \
       </section>
 
       <section className="mb-12">
+        <LabsSection slug="lfi" />
+      </section>
+
+      <section className="mb-12">
         <ToolsSection slug="lfi" />
       </section>
 
+      <Quiz slug="lfi" />
       <VideoSection slug="lfi" />
 
       {/* Navigation Section */}

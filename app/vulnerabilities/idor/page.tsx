@@ -1,6 +1,9 @@
 import Link from 'next/link'
 import VideoSection from '@/components/VideoSection'
 import ToolsSection from '@/components/ToolsSection'
+import LabsSection from '@/components/LabsSection'
+import Quiz from '@/components/Quiz'
+import ShareButtons from '@/components/ShareButtons'
 
 export default function IdorPage() {
   return (
@@ -23,6 +26,10 @@ export default function IdorPage() {
           <p className="text-orange-700 font-semibold mb-0">&#x26A0; مستوى الخطورة: عالية</p>
         </div>
       </header>
+
+      <div className="mb-6">
+        <ShareButtons title="IDOR" url={"https://web-security-guide.vercel.app/vulnerabilities/idor"} />
+      </div>
 
       <section className="mb-12">
         <h2 className="text-3xl font-bold text-gray-900 mb-4">تعريف IDOR</h2>
@@ -125,7 +132,9 @@ app.get('/api/invoice/:id', authenticate, (req, res) => {
         </div>
       </section>
 
+      <LabsSection slug="idor" />
       <ToolsSection slug="idor" />
+      <Quiz slug="idor" />
       <VideoSection slug="idor" />
     </div>
   )

@@ -1,6 +1,9 @@
 import Link from 'next/link'
 import VideoSection from '@/components/VideoSection'
 import ToolsSection from '@/components/ToolsSection'
+import ShareButtons from '@/components/ShareButtons'
+import LabsSection from '@/components/LabsSection'
+import Quiz from '@/components/Quiz'
 
 export default function NoSqlInjectionPage() {
   return (
@@ -23,6 +26,10 @@ export default function NoSqlInjectionPage() {
           <p className="text-red-700 font-semibold mb-0">&#x26A0; مستوى الخطورة: عالية</p>
         </div>
       </header>
+
+      <div className="mb-6">
+        <ShareButtons title="NoSQL Injection" url={"https://web-security-guide.vercel.app/vulnerabilities/nosql-injection"} />
+      </div>
 
       <section className="mb-12">
         <h2 className="text-3xl font-bold text-gray-900 mb-4">تعريف NoSQL Injection</h2>
@@ -134,10 +141,15 @@ app.post('/login', async (req, res) => {
       </section>
 
       <section className="mb-12">
+        <LabsSection slug="nosql-injection" />
+      </section>
+
+      <section className="mb-12">
         <ToolsSection slug="nosql-injection" />
       </section>
 
       <section className="mb-12">
+        <Quiz slug="nosql-injection" />
         <VideoSection slug="nosql-injection" />
       </section>
 

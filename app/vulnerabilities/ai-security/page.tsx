@@ -1,6 +1,9 @@
 import Link from 'next/link'
 import VideoSection from '@/components/VideoSection'
 import ToolsSection from '@/components/ToolsSection'
+import ShareButtons from '@/components/ShareButtons'
+import LabsSection from '@/components/LabsSection'
+import Quiz from '@/components/Quiz'
 
 export default function AiSecurityPage() {
   return (
@@ -23,6 +26,10 @@ export default function AiSecurityPage() {
           </p>
         </div>
       </section>
+
+      <div className="mb-6">
+        <ShareButtons title="أمن الذكاء الاصطناعي" url={"https://web-security-guide.vercel.app/vulnerabilities/ai-security"} />
+      </div>
 
       {/* Definition Section */}
       <section className="mb-12">
@@ -124,8 +131,10 @@ def chatbot(user_input):
         </ul>
       </section>
 
+      <LabsSection slug="ai-security" />
       <ToolsSection slug="ai-security" />
 
+      <Quiz slug="ai-security" />
       <VideoSection slug="ai-security" />
 
       {/* Navigation */}

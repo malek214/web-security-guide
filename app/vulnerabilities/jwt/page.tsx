@@ -1,6 +1,9 @@
 import Link from 'next/link';
 import VideoSection from '@/components/VideoSection'
 import ToolsSection from '@/components/ToolsSection'
+import LabsSection from '@/components/LabsSection'
+import Quiz from '@/components/Quiz'
+import ShareButtons from '@/components/ShareButtons'
 
 export const metadata = {
   title: 'ثغرات JWT - JSON Web Token Vulnerabilities | دليل أمن الويب',
@@ -27,6 +30,10 @@ export default function JWTVulnerabilitiesPage() {
           </p>
         </div>
       </header>
+
+      <div className="mb-6">
+        <ShareButtons title="JWT Vulnerabilities" url={"https://web-security-guide.vercel.app/vulnerabilities/jwt"} />
+      </div>
 
       <main className="container mx-auto px-4 max-w-4xl py-12">
         {/* Table of Contents */}
@@ -776,7 +783,9 @@ async function isTokenRevoked(token) {
           </div>
         </section>
 
+        <LabsSection slug="jwt" />
         <ToolsSection slug="jwt" />
+        <Quiz slug="jwt" />
         <VideoSection slug="jwt" />
 
         {/* Navigation */}

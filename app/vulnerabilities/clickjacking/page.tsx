@@ -1,6 +1,9 @@
 import Link from "next/link";
 import VideoSection from '@/components/VideoSection'
 import ToolsSection from '@/components/ToolsSection'
+import ShareButtons from '@/components/ShareButtons'
+import LabsSection from '@/components/LabsSection'
+import Quiz from '@/components/Quiz'
 
 export default function ClickjackingPage() {
   return (
@@ -38,6 +41,10 @@ export default function ClickjackingPage() {
             </p>
           </div>
         </header>
+
+        <div className="mb-6">
+          <ShareButtons title="اختطاف النقرات" url={"https://web-security-guide.vercel.app/vulnerabilities/clickjacking"} />
+        </div>
 
         {/* Definition Section */}
         <section className="mb-12 bg-gray-800/50 rounded-2xl p-8 border border-gray-700">
@@ -639,7 +646,9 @@ add_header Content-Security-Policy "frame-ancestors 'none'" always;`}</pre>
           </div>
         </section>
 
+        <LabsSection slug="clickjacking" />
         <ToolsSection slug="clickjacking" />
+        <Quiz slug="clickjacking" />
         <VideoSection slug="clickjacking" />
 
         {/* Navigation to Other Vulnerabilities */}

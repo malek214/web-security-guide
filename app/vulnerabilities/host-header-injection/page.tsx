@@ -1,6 +1,9 @@
 import Link from 'next/link'
 import VideoSection from '@/components/VideoSection'
 import ToolsSection from '@/components/ToolsSection'
+import ShareButtons from '@/components/ShareButtons'
+import LabsSection from '@/components/LabsSection'
+import Quiz from '@/components/Quiz'
 
 export default function HostHeaderInjectionPage() {
   return (
@@ -19,6 +22,10 @@ export default function HostHeaderInjectionPage() {
           </p>
         </div>
       </section>
+
+      <div className="mb-6">
+        <ShareButtons title="حقن رأس الاستضافة" url={"https://web-security-guide.vercel.app/vulnerabilities/host-header-injection"} />
+      </div>
 
       <section className="mb-12">
         <h2 className="text-3xl font-bold text-gray-900 mb-4">تعريف حقن رأس الاستضافة</h2>
@@ -593,10 +600,12 @@ module.exports = {
       </section>
 
       <section className="mb-12">
+        <LabsSection slug="host-header-injection" />
         <ToolsSection slug="host-header-injection" />
       </section>
 
       <section className="mb-12">
+        <Quiz slug="host-header-injection" />
         <VideoSection slug="host-header-injection" />
       </section>
 

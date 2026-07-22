@@ -2,6 +2,8 @@ import Link from 'next/link'
 import VideoSection from '@/components/VideoSection'
 import ToolsSection from '@/components/ToolsSection'
 import Quiz from '@/components/Quiz'
+import ShareButtons from '@/components/ShareButtons'
+import LabsSection from '@/components/LabsSection'
 
 export default function SqlInjectionPage() {
   return (
@@ -24,6 +26,10 @@ export default function SqlInjectionPage() {
           </p>
         </div>
       </section>
+
+      <div className="mb-6">
+        <ShareButtons title="حقن SQL - SQL Injection" url={"https://web-security-guide.vercel.app/vulnerabilities/sql-injection"} />
+      </div>
 
       {/* Definition Section */}
       <section className="mb-12">
@@ -473,6 +479,10 @@ const safe = mysql.escape(input);`}</code></pre>
         <blockquote className="border-r-4 border-danger-500 pr-4 italic text-gray-600 my-6">
           وفقاً لتقارير OWASP، لا تزال SQL Injection ضمن أهم 10 ثغرات أمنية في تطبيقات الويب. في عام 2023، أثرت على أكثر من 200,000 موقع ويب.
         </blockquote>
+      </section>
+
+      <section className="mb-12">
+        <LabsSection slug="sql-injection" />
       </section>
 
       <section className="mb-12">
