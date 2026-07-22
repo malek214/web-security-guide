@@ -40,11 +40,14 @@ export default function RootLayout({
                   <a href="/" className="devtools-tab active">
                     <span>🔍</span> الرئيسية
                   </a>
+                  <a href="/scanner" className="devtools-tab">
+                    <span>⚡</span> أداة الفحص
+                  </a>
                   <a href="/fundamentals" className="devtools-tab">
                     <span>📖</span> الأساسيات
                   </a>
                   <a href="/vulnerabilities/sql-injection" className="devtools-tab">
-                    <span>⚡</span> الثغرات
+                    <span>🛡️</span> الثغرات
                   </a>
                   <a href="/owasp-top-10" className="devtools-tab">
                     <span>🌐</span> OWASP
