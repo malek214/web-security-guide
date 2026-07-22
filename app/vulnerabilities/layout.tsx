@@ -39,6 +39,9 @@ const vulnerabilities = [
   { id: 'denial-of-service', title: 'حجب الخدمة', icon: '💥', category: 'توفر' },
   { id: 'file-upload', title: 'ثغرات رفع الملفات', icon: '📤', category: 'ملفات' },
   { id: 'ai-security', title: 'أمن الذكاء الاصطناعي', icon: '🤖', category: 'AI' },
+  { id: 'phishing', title: 'التصيد الاحتيالي', icon: '🎣', category: 'اجتماعي' },
+  { id: 'malware', title: 'البرمجيات الخبيثة', icon: '🦠', category: 'اجتماعي' },
+  { id: 'social-engineering', title: 'الهندسة الاجتماعية', icon: '🧠', category: 'اجتماعي' },
 ]
 
 const categories = Array.from(new Set(vulnerabilities.map(v => v.category)))

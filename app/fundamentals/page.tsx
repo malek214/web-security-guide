@@ -77,12 +77,12 @@ const fundamentals = [
     title: 'أنواع الهجمات الشائعة',
     description: 'هناك العديد من أنواع الهجمات التي يجب أن تكون على دراية بها.',
     attacks: [
-      { name: 'Phishing', desc: 'رسائل مزيفة لسرقة البيانات', icon: '🎣' },
-      { name: 'Malware', desc: 'برمجيات خبيثة', icon: '🦠' },
-      { name: 'DDoS', desc: 'حجب الخدمة الموزع', icon: '💥' },
-      { name: 'SQL Injection', desc: 'حقن أكواد SQL', icon: '💉' },
-      { name: 'XSS', desc: 'حقن نصوص', icon: '📜' },
-      { name: 'Social Engineering', desc: 'الهندسة الاجتماعية', icon: '🧠' },
+      { name: 'Phishing', desc: 'رسائل مزيفة لسرقة البيانات', icon: '🎣', slug: 'phishing' },
+      { name: 'Malware', desc: 'برمجيات خبيثة', icon: '🦠', slug: 'malware' },
+      { name: 'DDoS', desc: 'حجب الخدمة الموزع', icon: '💥', slug: 'denial-of-service' },
+      { name: 'SQL Injection', desc: 'حقن أكواد SQL', icon: '💉', slug: 'sql-injection' },
+      { name: 'XSS', desc: 'حقن نصوص', icon: '📜', slug: 'xss' },
+      { name: 'Social Engineering', desc: 'الهندسة الاجتماعية', icon: '🧠', slug: 'social-engineering' },
     ],
   },
 ];
@@ -214,7 +214,7 @@ export default function FundamentalsPage() {
           <p className="text-gray-600 mb-6">{fundamentals[4]?.description}</p>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             {fundamentals[4]?.attacks?.map((a) => (
-              <Link key={a.name} href={`/vulnerabilities/${a.name.toLowerCase().replace(/\s+/g, '-')}`} className="bg-gray-50 p-4 rounded-lg hover:shadow-md transition-shadow">
+              <Link key={a.name} href={`/vulnerabilities/${a.slug}`} className="bg-gray-50 p-4 rounded-lg hover:shadow-md transition-shadow">
                 <span className="text-3xl block mb-2">{a.icon}</span>
                 <h4 className="font-bold">{a.name}</h4>
                 <p className="text-sm text-gray-600">{a.desc}</p>

@@ -189,4 +189,19 @@ export const vulnerabilityTools: Record<string, { name: string; url: string; des
     { name: 'OWASP ZAP', url: 'https://www.zaproxy.org', description: 'يدعم اكتشاف AI security issues من خلال custom scripts.', type: 'free' },
     { name: 'Promptfoo', url: 'https://github.com/promptfoo/promptfoo', description: 'أداة لاختبار أمان نماذج AI واكتشاف Prompt Injection.', type: 'free' },
   ],
+  'phishing': [
+    { name: 'Gophish', url: 'https://getgophish.com', description: 'أداة مجانية ومفتوحة المصدر لإنشاء حملات تصيد احتيالي تجريبية لتدريب الموظفين.', type: 'free' },
+    { name: 'KnowBe4', url: 'https://www.knowbe4.com', description: 'منصة شاملة لتثقيف الموظفين واختبار التصيد الاحتيالي مع تقارير مفصلة.', type: 'paid' },
+    { name: 'PhishMe', url: 'https://www.proofpoint.com/us/products/security-awareness-training', description: 'أداة لمحاكاة هجمات التصيد وتدريب المستخدمين على كشفها.', type: 'paid' },
+  ],
+  'malware': [
+    { name: 'Malwarebytes', url: 'https://www.malwarebytes.com', description: 'من أقوى الأدوات المجانية للكشف عن البرمجيات الخبيثة وإزالتها.', type: 'both' },
+    { name: 'VirusTotal', url: 'https://www.virustotal.com', description: 'خدمة مجانية لفحص الملفات والروابط ضد أكثر من 70 محرك كشف فيروسات.', type: 'free' },
+    { name: 'Any.Run', url: 'https://any.run', description: 'منصة تحليل البرمجيات الخبيثة التفاعلية مع بيئة اختبار آمنة.', type: 'both' },
+  ],
+  'social-engineering': [
+    { name: 'Social Engineering Toolkit (SET)', url: 'https://github.com/trustedsec/social-engineer-toolkit', description: 'أداة مجانية ومفتوحة المصدر لإنشاء هجمات الهندسة الاجتماعية التجريبية.', type: 'free' },
+    { name: 'King Phisher', url: 'https://github.com/securestate/king-phisher', description: 'أداة مجانية لحملات التصيد الاحتيالي التدريبية مع تحليل النتائج.', type: 'free' },
+    { name: 'GoPhish', url: 'https://getgophish.com', description: 'أداة سهلة الاستخدام لإنشاء محاكاة تصيد احتيالي لتقييم المخاطر.', type: 'free' },
+  ],
 }

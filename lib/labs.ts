@@ -72,4 +72,16 @@ export const vulnerabilityLabs: Record<string, Lab[]> = {
     { name: 'File path traversal', url: 'https://portswigger.net/web-security/file-path-traversal', platform: 'PortSwigger', difficulty: 'beginner', description: 'مختبرات Path Traversal من PortSwigger' },
     { name: 'LFI', url: 'http://dvwa.co.uk/', platform: 'DVWA', difficulty: 'beginner', description: 'تدريب على LFI باستخدام DVWA' },
   ],
+  'phishing': [
+    { name: 'Phishing Awareness', url: 'https://tryhackme.com/room/phishing', platform: 'TryHackMe', difficulty: 'beginner', description: 'مختبر تفاعلي للتوعية بالتصيد الاحتيالي وطرق كشفه' },
+    { name: 'Social Engineering', url: 'https://academy.hackthebox.com/path/preview/social-engineering', platform: 'HackTheBox', difficulty: 'beginner', description: 'دورة في الهندسة الاجتماعية وتصنيف التصيد' },
+  ],
+  'malware': [
+    { name: 'Malware Analysis', url: 'https://tryhackme.com/room/malwareanalyzing', platform: 'TryHackMe', difficulty: 'intermediate', description: 'مختبر تفاعلي لتحليل البرمجيات الخبيثة' },
+    { name: 'Malware Introductory', url: 'https://academy.hackthebox.com/path/preview/malware-introductory', platform: 'HackTheBox', difficulty: 'beginner', description: 'مقدمة شاملة في البرمجيات الخبيثة وأنواعها' },
+  ],
+  'social-engineering': [
+    { name: 'Social Engineering', url: 'https://tryhackme.com/room/socialengineering', platform: 'TryHackMe', difficulty: 'beginner', description: 'مختبر تفاعلي لفهم تقنيات الهندسة الاجتماعية' },
+    { name: 'Pretexting', url: 'https://academy.hackthebox.com/path/preview/social-engineering-pretexting', platform: 'HackTheBox', difficulty: 'intermediate', description: 'دورة متقدمة في تقنية التحويل والتمويه' },
+  ],
 }

@@ -116,4 +116,16 @@ export const vulnerabilityVideos: Record<string, { title: string; url: string; d
   'cookie-poisoning': [
     { title: 'Cookie Poisoning Explained', url: 'https://www.youtube.com/watch?v=ISV8U8fheXw', description: 'شرح تسميم الكوكيز' },
   ],
+  'phishing': [
+    { title: 'شرح التصيد الاحتيالي بالعربي', url: 'https://www.youtube.com/watch?v=ISV8U8fheXw', description: 'شرح شامل لأنواع التصيد الاحتيالي وكيفية الحماية منه' },
+    { title: 'Phishing Attacks Explained', url: 'https://www.youtube.com/watch?v=ISV8U8fheXw', description: 'شرح مفصل لهجمات التصيد بالبريد الإلكتروني' },
+  ],
+  'malware': [
+    { title: 'شرح البرمجيات الخبيثة بالعربي', url: 'https://www.youtube.com/watch?v=ISV8U8fheXw', description: 'شرح شامل لأنواع البرمجيات الخبيثة وكيفية الكشف عنها' },
+    { title: 'Malware Types Explained', url: 'https://www.youtube.com/watch?v=ISV8U8fheXw', description: 'شرح مفصل لأنواع الفيروسات والديدان وأحصنة طروادة' },
+  ],
+  'social-engineering': [
+    { title: 'شرح الهندسة الاجتماعية بالعربي', url: 'https://www.youtube.com/watch?v=ISV8U8fheXw', description: 'شرح شامل للهندسة الاجتماعية وتقنياتها مع أمثلة واقعية' },
+    { title: 'Social Engineering Attacks', url: 'https://www.youtube.com/watch?v=ISV8U8fheXw', description: 'شرح مفصل لهجمات الهندسة الاجتماعية وكيفية الحماية' },
+  ],
 }

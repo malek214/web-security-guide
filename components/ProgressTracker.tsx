@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 
-const TOTAL_PAGES = 37
+const TOTAL_PAGES = 40
 const STORAGE_KEY = 'web-security-guide-progress'
 
 function getReadPages(): string[] {
