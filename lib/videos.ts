@@ -104,9 +104,6 @@ export const vulnerabilityVideos: Record<string, { title: string; url: string; d
     { title: 'AI Security - Prompt Injection', url: 'https://www.youtube.com/watch?v=ISV8U8fheXw', description: 'شرح أمن الذكاء الاصطناعي وثغرات Prompt Injection' },
     { title: 'LLM Security Attacks', url: 'https://www.youtube.com/watch?v=ISV8U8fheXw', description: 'شرح هجمات نماذج اللغة الكبيرة' },
   ],
-  'n8n-security': [
-    { title: 'n8n Security Best Practices', url: 'https://www.youtube.com/watch?v=ISV8U8fheXw', description: 'أفضل ممارسات أمن n8n' },
-  ],
   'ldap-injection': [
     { title: 'LDAP Injection Tutorial', url: 'https://www.youtube.com/watch?v=ISV8U8fheXw', description: 'شرح حقن LDAP' },
   ],
