@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import VideoSection from '@/components/VideoSection'
 import ToolsSection from '@/components/ToolsSection'
+import Quiz from '@/components/Quiz'
 
 export default function SqlInjectionPage() {
   return (
@@ -480,6 +481,10 @@ const safe = mysql.escape(input);`}</code></pre>
 
       <section className="mb-12">
         <VideoSection slug="sql-injection" />
+      </section>
+
+      <section className="mb-12">
+        <Quiz slug="sql-injection" />
       </section>
 
       {/* Navigation Section */}
