@@ -25,6 +25,137 @@
   --gradient-danger: linear-gradient(135deg, #f85149 0%, #d29922 100%);
 }
 
+/* Light Mode */
+.dark {
+  --devtools-bg: #ffffff;
+  --devtools-sidebar: #f6f8fa;
+  --devtools-panel: #ffffff;
+  --devtools-border: #d0d7de;
+  --devtools-text: #1f2328;
+  --devtools-text-dim: #656d76;
+  --devtools-accent: #0969da;
+  --devtools-green: #1a7f37;
+  --devtools-orange: #9a6700;
+  --devtools-yellow: #9a6700;
+  --devtools-red: #cf222e;
+  --devtools-purple: #8250df;
+  --devtools-blue: #0969da;
+  --devtools-cyan: #0969da;
+  --devtools-glow: rgba(9, 105, 218, 0.15);
+  --gradient-primary: linear-gradient(135deg, #0969da 0%, #8250df 50%, #cf222e 100%);
+  --gradient-success: linear-gradient(135deg, #1a7f37 0%, #0969da 100%);
+  --gradient-danger: linear-gradient(135deg, #cf222e 0%, #9a6700 100%);
+}
+
+.dark body {
+  background: #ffffff;
+  color: #1f2328;
+}
+
+.dark .glass {
+  background: rgba(246, 248, 250, 0.9);
+  border-color: #d0d7de;
+}
+
+.dark .gradient-border::before {
+  background: linear-gradient(135deg, #0969da 0%, #8250df 50%, #cf222e 100%);
+}
+
+.dark .devtools-tab:hover {
+  background: rgba(9, 105, 218, 0.08);
+}
+
+.dark .devtools-tab.active {
+  background: rgba(9, 105, 218, 0.12);
+}
+
+.dark .code-devtools {
+  background: #f6f8fa;
+  border-color: #d0d7de;
+}
+
+.dark .code-devtools-header {
+  background: #eaeef2;
+}
+
+.dark .vuln-card-devtools {
+  background: #ffffff;
+  border-color: #d0d7de;
+}
+
+.dark .vuln-card-devtools:hover {
+  border-color: #0969da;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.dark .severity-critical {
+  background: linear-gradient(135deg, #cf222e 0%, #a40e26 100%);
+  box-shadow: 0 2px 8px rgba(207, 34, 46, 0.3);
+}
+
+.dark .severity-high {
+  background: linear-gradient(135deg, #9a6700 0%, #7d4e00 100%);
+  box-shadow: 0 2px 8px rgba(154, 103, 0, 0.3);
+}
+
+.dark .severity-medium {
+  background: linear-gradient(135deg, #0969da 0%, #0550ae 100%);
+  box-shadow: 0 2px 8px rgba(9, 105, 218, 0.3);
+}
+
+.dark .severity-low {
+  background: linear-gradient(135deg, #1a7f37 0%, #116329 100%);
+  box-shadow: 0 2px 8px rgba(26, 127, 55, 0.3);
+}
+
+.dark .severity-info {
+  background: linear-gradient(135deg, #8250df 0%, #6639ba 100%);
+  box-shadow: 0 2px 8px rgba(130, 80, 223, 0.3);
+}
+
+.dark .card-hover:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.dark .btn-ghost {
+  border-color: #d0d7de;
+  color: #1f2328;
+}
+
+.dark .btn-ghost:hover {
+  border-color: #0969da;
+  background: rgba(9, 105, 218, 0.08);
+}
+
+.dark .console-log {
+  border-color: #d0d7de;
+}
+
+.dark .console-log:hover {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.dark .network-request {
+  border-color: #d0d7de;
+}
+
+.dark .network-request:hover {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #f6f8fa;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #d0d7de;
+  border-color: #f6f8fa;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #afb8c1;
+}
+
 * {
   box-sizing: border-box;
 }

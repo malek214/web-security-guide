@@ -17,17 +17,20 @@ export function useTheme() {
 }
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [isDark, setIsDark] = useState(false)
+  const [isDark, setIsDark] = useState(true)
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
     setMounted(true)
     const stored = localStorage.getItem('theme')
-    if (stored === 'dark' || (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      setIsDark(true)
+    if (stored === 'light') {
+      setIsDark(false)
       document.documentElement.classList.add('dark')
+      document.body.classList.add('dark')
     } else {
+      setIsDark(true)
       document.documentElement.classList.remove('dark')
+      document.body.classList.remove('dark')
     }
   }, [])
 
@@ -36,9 +39,11 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
       const next = !prev
       localStorage.setItem('theme', next ? 'dark' : 'light')
       if (next) {
-        document.documentElement.classList.add('dark')
-      } else {
         document.documentElement.classList.remove('dark')
+        document.body.classList.remove('dark')
+      } else {
+        document.documentElement.classList.add('dark')
+        document.body.classList.add('dark')
       }
       return next
     })
@@ -61,8 +66,13 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="relative inline-flex h-10 w-10 items-center justify-center rounded-lg border border-gray-200 bg-white text-gray-700 transition-all hover:bg-gray-100 hover:shadow-md dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
-      aria-label={isDark ? 'تبديل للوضع الفاتح' : 'تبديل للوضع الداكن'}
+      className="relative inline-flex h-10 w-10 items-center justify-center rounded-lg transition-all"
+      style={{
+        background: isDark ? '#1c2128' : '#f6f8fa',
+        border: `1px solid ${isDark ? '#30363d' : '#d0d7de'}`,
+        color: isDark ? '#e6edf3' : '#1f2328',
+      }}
+      aria-label={isDark ? 'النسخة النهارية' : 'النسخة الليلية'}
     >
       {isDark ? (
         <svg
