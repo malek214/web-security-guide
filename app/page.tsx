@@ -37,6 +37,8 @@ const allVulnerabilities = [
   { id: 'prototype-pollution', title: 'تلوث النموذج البرمجي', titleEn: 'Prototype Pollution', icon: '🧬', severity: 'متوسطة', category: 'JavaScript', color: 'yellow' },
   { id: 'denial-of-service', title: 'حجب الخدمة', titleEn: 'Denial of Service', icon: '💥', severity: 'خطيرة', category: 'توفر', color: 'red' },
   { id: 'file-upload', title: 'ثغرات رفع الملفات', titleEn: 'File Upload Vulnerabilities', icon: '📤', severity: 'خطيرة', category: 'ملفات', color: 'orange' },
+  { id: 'ai-security', title: 'أمن الذكاء الاصطناعي', titleEn: 'AI Security', icon: '🤖', severity: 'خطيرة', category: 'AI', color: 'purple' },
+  { id: 'n8n-security', title: 'أمن n8n', titleEn: 'n8n Security', icon: '⚡', severity: 'خطيرة', category: 'أدوات', color: 'orange' },
 ]
 
 const severityColors: Record<string, string> = {
@@ -86,7 +88,7 @@ export default function HomePage() {
       {/* Stats Section */}
       <section className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
         <div className="stat-card rounded-xl p-6 text-center card-hover">
-          <div className="text-4xl font-extrabold text-blue-600 mb-2">35+</div>
+          <div className="text-4xl font-extrabold text-blue-600 mb-2">38+</div>
           <div className="text-gray-600 font-medium">ثغرة أمنية</div>
         </div>
         <div className="stat-card rounded-xl p-6 text-center card-hover">
