@@ -143,176 +143,198 @@ const fundamentals = [
 
 export default function FundamentalsPage() {
   return (
-    <div className="max-w-5xl mx-auto" dir="rtl">
-      <section className="mb-12">
-        <div className="bg-gradient-to-r from-emerald-600 to-teal-600 rounded-2xl p-8 text-white">
-          <h1 className="text-4xl font-bold mb-4">أساسيات الأمن السيبراني</h1>
-          <p className="text-emerald-100 text-lg">دليلك الشامل لفهم أساسيات الأمان والشبكات</p>
+    <div className="min-h-screen" style={{ background: '#1e1e1e' }} dir="rtl">
+      {/* Page Header - DevTools Style */}
+      <div style={{ background: '#252526', borderBottom: '1px solid #3c3c3c' }} className="p-6">
+        <div className="max-w-5xl mx-auto">
+          <div className="flex items-center gap-2 mb-2" style={{ color: '#858585', fontSize: '12px' }}>
+            <span>Elements</span>
+            <span>›</span>
+            <span>Console</span>
+            <span>›</span>
+            <span style={{ color: '#cccccc' }}>Fundamentals</span>
+          </div>
+          <h1 className="text-3xl font-bold flex items-center gap-3" style={{ color: '#cccccc' }}>
+            <span className="text-4xl">🔒</span>
+            أساسيات الأمن السيبراني
+          </h1>
+          <p style={{ color: '#858585', fontSize: '14px' }} className="mt-2">
+            دليلك الشامل لفهم أساسيات الأمان والشبكات
+          </p>
         </div>
-      </section>
+      </div>
 
-      {/* What is Cybersecurity */}
-      <section className="mb-12">
-        <div className="bg-white rounded-xl border p-8 shadow-sm">
-          <div className="flex items-center gap-3 mb-4">
-            <span className="text-4xl">{fundamentals[0]?.icon}</span>
-            <h2 className="text-2xl font-bold">{fundamentals[0]?.title}</h2>
-          </div>
-          <p className="text-gray-600 mb-6">{fundamentals[0]?.description}</p>
-          <div className="grid md:grid-cols-2 gap-4 mb-6">
-            {fundamentals[0]?.keyPoints?.map((point) => (
-              <div key={point} className="flex items-start gap-2 bg-emerald-50 p-3 rounded-lg">
-                <span className="text-emerald-500">✓</span>
-                <span>{point}</span>
-              </div>
-            ))}
-          </div>
-          <h3 className="text-xl font-bold mb-4">فروع الأمن السيبراني</h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {fundamentals[0]?.categories?.map((cat) => (
-              <div key={cat.name} className="text-center p-4 bg-gray-50 rounded-lg">
-                <span className="text-3xl block mb-2">{cat.icon}</span>
-                <h4 className="font-bold text-sm">{cat.name}</h4>
-                <p className="text-xs text-gray-500">{cat.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Network Basics */}
-      <section className="mb-12">
-        <div className="bg-white rounded-xl border p-8 shadow-sm">
-          <div className="flex items-center gap-3 mb-4">
-            <span className="text-4xl">{fundamentals[1]?.icon}</span>
-            <h2 className="text-2xl font-bold">{fundamentals[1]?.title}</h2>
-          </div>
-          <p className="text-gray-600 mb-6">{fundamentals[1]?.description}</p>
-          <h3 className="text-lg font-bold mb-4">نموذج OSI - 7 طبقات</h3>
-          <div className="space-y-2">
-            {fundamentals[1]?.layers?.map((layer) => (
-              <div key={layer.layer} className="flex flex-col md:flex-row md:items-center justify-between bg-gray-50 p-3 rounded-lg">
-                <div className="flex items-center gap-3">
-                  <span className="bg-emerald-500 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold">{layer.layer}</span>
-                  <div>
-                    <span className="font-bold">{layer.name}</span>
-                    <span className="text-gray-500 text-sm mr-2">({layer.nameEn})</span>
+      <div className="max-w-5xl mx-auto p-6">
+        {/* What is Cybersecurity */}
+        <section className="mb-8">
+          <div style={{ background: '#252526', border: '1px solid #3c3c3c', borderRadius: '4px', overflow: 'hidden' }}>
+            <div style={{ background: '#333333', borderBottom: '1px solid #3c3c3c', padding: '8px 16px' }} className="flex items-center justify-between">
+              <span style={{ color: '#cccccc', fontSize: '12px', fontWeight: 'bold' }}>🔒 ما هو الأمن السيبراني؟</span>
+              <span style={{ color: '#858585', fontSize: '11px' }}>Cybersecurity</span>
+            </div>
+            <div className="p-6">
+              <p style={{ color: '#cccccc' }} className="mb-6">{fundamentals[0]?.description}</p>
+              <div className="grid md:grid-cols-2 gap-3 mb-6">
+                {fundamentals[0]?.keyPoints?.map((point) => (
+                  <div key={point} className="flex items-start gap-2 p-3" style={{ background: '#1e1e1e', border: '1px solid #3c3c3c', borderRadius: '4px' }}>
+                    <span style={{ color: '#4ec9b0' }}>✓</span>
+                    <span style={{ color: '#cccccc', fontSize: '13px' }}>{point}</span>
                   </div>
-                </div>
-                <div className="text-sm text-gray-600 mt-2 md:mt-0">
-                  <span className="ml-2">Protocols: {layer.protocols}</span>
-                  <span className="text-red-500"> | Threats: {layer.security}</span>
-                </div>
+                ))}
               </div>
-            ))}
+              <h3 style={{ color: '#cccccc', fontSize: '14px', fontWeight: 'bold' }} className="mb-3">فروع الأمن السيبراني</h3>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                {fundamentals[0]?.categories?.map((cat) => (
+                  <div key={cat.name} className="text-center p-4" style={{ background: '#1e1e1e', border: '1px solid #3c3c3c', borderRadius: '4px' }}>
+                    <span className="text-3xl block mb-2">{cat.icon}</span>
+                    <h4 style={{ color: '#cccccc', fontSize: '13px', fontWeight: 'bold' }}>{cat.name}</h4>
+                    <p style={{ color: '#858585', fontSize: '11px' }}>{cat.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* HTTP Basics */}
-      <section className="mb-12">
-        <div className="bg-white rounded-xl border p-8 shadow-sm">
-          <div className="flex items-center gap-3 mb-4">
-            <span className="text-4xl">{fundamentals[2]?.icon}</span>
-            <h2 className="text-2xl font-bold">{fundamentals[2]?.title}</h2>
-          </div>
-          <p className="text-gray-600 mb-6">{fundamentals[2]?.description}</p>
-          <h3 className="text-lg font-bold mb-4">HTTP Methods</h3>
-          <div className="grid md:grid-cols-2 gap-4 mb-6">
-            {fundamentals[2]?.methods?.map((m) => (
-              <div key={m.method} className="bg-gray-50 p-4 rounded-lg">
-                <span className="bg-blue-500 text-white px-2 py-1 rounded text-sm font-bold">{m.method}</span>
-                <p className="mt-2 text-sm">{m.desc}</p>
-                <p className="text-xs text-orange-600 mt-1">⚠️ {m.security}</p>
-              </div>
-            ))}
-          </div>
-          <h3 className="text-lg font-bold mb-4">Security Headers المهمة</h3>
-          <div className="space-y-2">
-            {fundamentals[2]?.headers?.map((h) => (
-              <div key={h.header} className="bg-gray-50 p-3 rounded-lg">
-                <code className="text-sm font-bold text-orange-700">{h.header}</code>
-                <p className="text-sm text-gray-600">{h.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* DNS Basics */}
-      <section className="mb-12">
-        <div className="bg-white rounded-xl border p-8 shadow-sm">
-          <div className="flex items-center gap-3 mb-4">
-            <span className="text-4xl">{fundamentals[3]?.icon}</span>
-            <h2 className="text-2xl font-bold">{fundamentals[3]?.title}</h2>
-          </div>
-          <p className="text-gray-600 mb-6">{fundamentals[3]?.description}</p>
-          <div className="grid md:grid-cols-3 gap-4">
-            {fundamentals[3]?.records?.map((r) => (
-              <div key={r.type} className="bg-gray-50 p-4 rounded-lg text-center">
-                <span className="bg-purple-500 text-white px-3 py-1 rounded-full text-sm font-bold">{r.type}</span>
-                <p className="mt-2 text-sm">{r.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Attack Vectors */}
-      <section className="mb-12">
-        <div className="bg-white rounded-xl border p-8 shadow-sm">
-          <div className="flex items-center gap-3 mb-4">
-            <span className="text-4xl">{fundamentals[4]?.icon}</span>
-            <h2 className="text-2xl font-bold">{fundamentals[4]?.title}</h2>
-          </div>
-          <p className="text-gray-600 mb-6">{fundamentals[4]?.description}</p>
-          
-          <div className="space-y-6">
-            {fundamentals[4]?.attacks?.map((a) => (
-              <div key={a.name} className="border border-gray-200 rounded-xl overflow-hidden">
-                <div className="bg-gradient-to-r from-gray-50 to-gray-100 p-4">
-                  <div className="flex items-center justify-between">
+        {/* Network Basics */}
+        <section className="mb-8">
+          <div style={{ background: '#252526', border: '1px solid #3c3c3c', borderRadius: '4px', overflow: 'hidden' }}>
+            <div style={{ background: '#333333', borderBottom: '1px solid #3c3c3c', padding: '8px 16px' }} className="flex items-center justify-between">
+              <span style={{ color: '#cccccc', fontSize: '12px', fontWeight: 'bold' }}>🌐 أساسيات الشبكات</span>
+              <span style={{ color: '#858585', fontSize: '11px' }}>OSI Model</span>
+            </div>
+            <div className="p-6">
+              <p style={{ color: '#cccccc' }} className="mb-4">{fundamentals[1]?.description}</p>
+              <h3 style={{ color: '#cccccc', fontSize: '14px', fontWeight: 'bold' }} className="mb-3">نموذج OSI - 7 طبقات</h3>
+              <div className="space-y-2" dir="ltr">
+                {fundamentals[1]?.layers?.map((layer) => (
+                  <div key={layer.layer} className="flex flex-col md:flex-row md:items-center justify-between p-3" style={{ background: '#1e1e1e', border: '1px solid #3c3c3c', borderRadius: '4px' }}>
                     <div className="flex items-center gap-3">
-                      <span className="text-3xl">{a.icon}</span>
+                      <span style={{ background: '#007acc', color: '#ffffff', width: '28px', height: '28px', borderRadius: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '12px', fontWeight: 'bold' }}>{layer.layer}</span>
                       <div>
-                        <h4 className="font-bold text-lg">{a.name}</h4>
-                        <p className="text-sm text-gray-600">{a.desc}</p>
+                        <span style={{ color: '#cccccc', fontSize: '13px', fontWeight: 'bold' }}>{layer.name}</span>
+                        <span style={{ color: '#858585', fontSize: '11px', marginRight: '8px' }}>({layer.nameEn})</span>
                       </div>
                     </div>
-                    <Link href={`/vulnerabilities/${a.slug}`} className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-blue-700 transition-colors">
-                      التفاصيل ←
-                    </Link>
-                  </div>
-                </div>
-                <div className="p-4 bg-white">
-                  <div className="grid md:grid-cols-3 gap-4">
-                    <div>
-                      <h5 className="font-bold text-sm text-gray-700 mb-2">📌 كيف يعمل؟</h5>
-                      <p className="text-xs text-gray-600">{a.howItWorks}</p>
-                    </div>
-                    <div>
-                      <h5 className="font-bold text-sm text-red-700 mb-2">⚠️ المخاطر</h5>
-                      <p className="text-xs text-gray-600">{a.risks}</p>
-                    </div>
-                    <div>
-                      <h5 className="font-bold text-sm text-green-700 mb-2">🛡️ الحماية</h5>
-                      <p className="text-xs text-gray-600">{a.protection}</p>
+                    <div className="text-sm mt-2 md:mt-0 flex gap-4">
+                      <span style={{ color: '#858585', fontSize: '12px' }}>{layer.protocols}</span>
+                      <span className="severity-high">{layer.security}</span>
                     </div>
                   </div>
-                  <div className="mt-3 pt-3 border-t border-gray-100">
-                    <h5 className="font-bold text-sm text-purple-700 mb-2">🔧 أفضل الأدوات</h5>
-                    <div className="flex flex-wrap gap-2">
-                      {a.tools?.map((tool) => (
-                        <span key={tool} className="bg-purple-100 text-purple-700 px-2 py-1 rounded text-xs">{tool}</span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+
+        {/* HTTP Basics */}
+        <section className="mb-8">
+          <div style={{ background: '#252526', border: '1px solid #3c3c3c', borderRadius: '4px', overflow: 'hidden' }}>
+            <div style={{ background: '#333333', borderBottom: '1px solid #3c3c3c', padding: '8px 16px' }} className="flex items-center justify-between">
+              <span style={{ color: '#cccccc', fontSize: '12px', fontWeight: 'bold' }}>📡 بروتوكول HTTP/HTTPS</span>
+              <span style={{ color: '#858585', fontSize: '11px' }}>HTTP Methods & Headers</span>
+            </div>
+            <div className="p-6">
+              <p style={{ color: '#cccccc' }} className="mb-4">{fundamentals[2]?.description}</p>
+              <h3 style={{ color: '#cccccc', fontSize: '14px', fontWeight: 'bold' }} className="mb-3">HTTP Methods</h3>
+              <div className="grid md:grid-cols-2 gap-3 mb-6">
+                {fundamentals[2]?.methods?.map((m) => (
+                  <div key={m.method} className="p-4" style={{ background: '#1e1e1e', border: '1px solid #3c3c3c', borderRadius: '4px' }}>
+                    <span style={{ background: '#007acc', color: '#ffffff', padding: '2px 8px', borderRadius: '4px', fontSize: '12px', fontWeight: 'bold' }}>{m.method}</span>
+                    <p style={{ color: '#cccccc', fontSize: '13px' }} className="mt-2">{m.desc}</p>
+                    <p style={{ color: '#ce9178', fontSize: '12px' }} className="mt-1">⚠️ {m.security}</p>
+                  </div>
+                ))}
+              </div>
+              <h3 style={{ color: '#cccccc', fontSize: '14px', fontWeight: 'bold' }} className="mb-3">Security Headers المهمة</h3>
+              <div className="space-y-2">
+                {fundamentals[2]?.headers?.map((h) => (
+                  <div key={h.header} className="p-3" style={{ background: '#1e1e1e', border: '1px solid #3c3c3c', borderRadius: '4px' }}>
+                    <code style={{ color: '#ce9178', fontSize: '12px', fontWeight: 'bold' }}>{h.header}</code>
+                    <p style={{ color: '#cccccc', fontSize: '12px' }} className="mt-1">{h.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* DNS Basics */}
+        <section className="mb-8">
+          <div style={{ background: '#252526', border: '1px solid #3c3c3c', borderRadius: '4px', overflow: 'hidden' }}>
+            <div style={{ background: '#333333', borderBottom: '1px solid #3c3c3c', padding: '8px 16px' }} className="flex items-center justify-between">
+              <span style={{ color: '#cccccc', fontSize: '12px', fontWeight: 'bold' }}>🌍 نظام DNS</span>
+              <span style={{ color: '#858585', fontSize: '11px' }}>DNS Records</span>
+            </div>
+            <div className="p-6">
+              <p style={{ color: '#cccccc' }} className="mb-4">{fundamentals[3]?.description}</p>
+              <div className="grid md:grid-cols-3 gap-3">
+                {fundamentals[3]?.records?.map((r) => (
+                  <div key={r.type} className="text-center p-4" style={{ background: '#1e1e1e', border: '1px solid #3c3c3c', borderRadius: '4px' }}>
+                    <span style={{ background: '#569cd6', color: '#ffffff', padding: '4px 12px', borderRadius: '4px', fontSize: '12px', fontWeight: 'bold' }}>{r.type}</span>
+                    <p style={{ color: '#cccccc', fontSize: '12px' }} className="mt-2">{r.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Attack Vectors */}
+        <section className="mb-8">
+          <div style={{ background: '#252526', border: '1px solid #3c3c3c', borderRadius: '4px', overflow: 'hidden' }}>
+            <div style={{ background: '#333333', borderBottom: '1px solid #3c3c3c', padding: '8px 16px' }} className="flex items-center justify-between">
+              <span style={{ color: '#cccccc', fontSize: '12px', fontWeight: 'bold' }}>⚔️ أنواع الهجمات الشائعة</span>
+              <span style={{ color: '#858585', fontSize: '11px' }}>Common Attacks</span>
+            </div>
+            <div className="p-6">
+              <p style={{ color: '#cccccc' }} className="mb-4">{fundamentals[4]?.description}</p>
+              <div className="space-y-4">
+                {fundamentals[4]?.attacks?.map((a) => (
+                  <div key={a.name} style={{ border: '1px solid #3c3c3c', borderRadius: '4px', overflow: 'hidden' }}>
+                    <div style={{ background: '#333333', borderBottom: '1px solid #3c3c3c', padding: '12px 16px' }} className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <span className="text-2xl">{a.icon}</span>
+                        <div>
+                          <h4 style={{ color: '#cccccc', fontSize: '14px', fontWeight: 'bold' }}>{a.name}</h4>
+                          <p style={{ color: '#858585', fontSize: '12px' }}>{a.desc}</p>
+                        </div>
+                      </div>
+                      <Link href={`/vulnerabilities/${a.slug}`} style={{ background: '#007acc', color: '#ffffff', padding: '6px 12px', borderRadius: '4px', fontSize: '12px' }} className="hover:opacity-80 transition-opacity">
+                        التفاصيل ←
+                      </Link>
+                    </div>
+                    <div className="p-4" style={{ background: '#1e1e1e' }}>
+                      <div className="grid md:grid-cols-3 gap-4">
+                        <div>
+                          <h5 style={{ color: '#cccccc', fontSize: '12px', fontWeight: 'bold', marginBottom: '8px' }}>📌 كيف يعمل؟</h5>
+                          <p style={{ color: '#858585', fontSize: '12px' }}>{a.howItWorks}</p>
+                        </div>
+                        <div>
+                          <h5 style={{ color: '#f44747', fontSize: '12px', fontWeight: 'bold', marginBottom: '8px' }}>⚠️ المخاطر</h5>
+                          <p style={{ color: '#858585', fontSize: '12px' }}>{a.risks}</p>
+                        </div>
+                        <div>
+                          <h5 style={{ color: '#4ec9b0', fontSize: '12px', fontWeight: 'bold', marginBottom: '8px' }}>🛡️ الحماية</h5>
+                          <p style={{ color: '#858585', fontSize: '12px' }}>{a.protection}</p>
+                        </div>
+                      </div>
+                      <div className="mt-3 pt-3" style={{ borderTop: '1px solid #3c3c3c' }}>
+                        <h5 style={{ color: '#dcdcaa', fontSize: '12px', fontWeight: 'bold', marginBottom: '8px' }}>🔧 أفضل الأدوات</h5>
+                        <div className="flex flex-wrap gap-2">
+                          {a.tools?.map((tool) => (
+                            <span key={tool} style={{ background: '#333333', color: '#dcdcaa', padding: '2px 8px', borderRadius: '4px', fontSize: '11px', border: '1px solid #3c3c3c' }}>{tool}</span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
     </div>
   );
 }
