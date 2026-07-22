@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import VideoSection from '@/components/VideoSection'
 
 export default function SsrfPage() {
   return (
@@ -665,6 +666,10 @@ def resolve_and_validate(hostname):
         <blockquote className="border-r-4 border-danger-500 pr-4 italic text-gray-600 my-6">
           وفقاً لـ OWASP Top 10 (2021)، أصبح SSRF ثغرة مستقلة تحت فئة A10: Server-Side Request Forgery. أثرت على تطبيقات كبرى مثل Microsoft, Shopify, و GitHub. في عام 2023، تم اكتشاف أكثر من 15,000 ثغرة SSRF في منصات حكومية وتجارية.
         </blockquote>
+      </section>
+
+      <section className="mb-12">
+        <VideoSection slug="ssrf" />
       </section>
 
       {/* Navigation Section */}

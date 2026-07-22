@@ -1,4 +1,5 @@
 import Link from "next/link";
+import VideoSection from '@/components/VideoSection'
 
 export default function SubdomainTakeoverPage() {
   return (
@@ -519,6 +520,11 @@ curl -I https://old-app.example.com
               </li>
             </ul>
           </div>
+        </section>
+
+        {/* Video Section */}
+        <section className="mb-12">
+          <VideoSection slug="subdomain-takeover" />
         </section>
 
         {/* Navigation */}

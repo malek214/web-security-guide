@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import VideoSection from '@/components/VideoSection'
 
 export default function XssPage() {
   return (
@@ -323,6 +324,10 @@ res.cookie('sessionId', sessionId, {
             <p className="text-gray-600 mb-0">صفحات البحث عادة ما تعكس مدخلات المستخدم مباشرة</p>
           </div>
         </div>
+      </section>
+
+      <section className="mb-12">
+        <VideoSection slug="xss" />
       </section>
 
       <section className="mb-12">

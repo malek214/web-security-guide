@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import VideoSection from '@/components/VideoSection'
 
 export default function IdorPage() {
   return (
@@ -122,6 +123,8 @@ app.get('/api/invoice/:id', authenticate, (req, res) => {
           </Link>
         </div>
       </section>
+
+      <VideoSection slug="idor" />
     </div>
   )
 }

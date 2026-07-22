@@ -1,4 +1,5 @@
 import Link from "next/link";
+import VideoSection from '@/components/VideoSection'
 
 export default function RaceConditionPage() {
   return (
@@ -677,6 +678,10 @@ $$ LANGUAGE plpgsql;`}
             <p className="text-gray-600 mb-0">القفل على مستوى التطبيق لا يكفي إذا كان هناك نسخ متعددة من التطبيق</p>
           </div>
         </div>
+      </section>
+
+      <section className="mb-12">
+        <VideoSection slug="race-condition" />
       </section>
 
       <section className="mb-12">

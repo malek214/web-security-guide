@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import VideoSection from '@/components/VideoSection'
 
 export default function ApiSecurityPage() {
   return (
@@ -927,6 +928,8 @@ app.get('/api/users/:id', authenticate, async (req, res) => {
           <li><strong>Optus (2022):</strong> ثغرة API في شركة اتصالات أسترالية سمح بسرقة بيانات 10 مليون عميل</li>
         </ul>
       </section>
+
+      <VideoSection slug="api-security" />
 
       {/* Navigation Section */}
       <section className="mt-16">

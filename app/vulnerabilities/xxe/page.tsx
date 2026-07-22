@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import VideoSection from '@/components/VideoSection'
 
 export default function XxePage() {
   return (
@@ -654,6 +655,8 @@ app.post('/api/user', (req, res) => {
           وفقاً لـ OWASP Top 10 (2017)، كانت XXE ضمن فئة A4: Broken Access Control. في عام 2019، اكتشف باحثون ثغرة XXE في Apple iOS تسمح بسرقة الملفات عبر تطبيقات معينة. تأثرت أنظمة كبرى مثل WordPress, Joomla, و Rails بثغرات XXE تاريخياً.
         </blockquote>
       </section>
+
+      <VideoSection slug="xxe" />
 
       {/* Navigation Section */}
       <section className="mt-16">

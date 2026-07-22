@@ -1,4 +1,5 @@
 import Link from "next/link";
+import VideoSection from '@/components/VideoSection'
 
 export default function ClickjackingPage() {
   return (
@@ -636,6 +637,8 @@ add_header Content-Security-Policy "frame-ancestors 'none'" always;`}</pre>
             </table>
           </div>
         </section>
+
+        <VideoSection slug="clickjacking" />
 
         {/* Navigation to Other Vulnerabilities */}
         <section className="mt-16">

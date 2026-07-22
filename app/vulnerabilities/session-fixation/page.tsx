@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import VideoSection from '@/components/VideoSection'
 
 export default function SessionFixationPage() {
   return (
@@ -341,6 +342,8 @@ app.use((req, res, next) => {
           </Link>
         </div>
       </section>
+
+      <VideoSection slug="session-fixation" />
     </div>
   )
 }

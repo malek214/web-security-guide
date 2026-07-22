@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import VideoSection from '@/components/VideoSection'
 
 export default function CRLFInjectionPage() {
   return (
@@ -104,6 +105,8 @@ app.use(helmet());`}
           </div>
         </div>
       </section>
+
+      <VideoSection slug="crlf-injection" />
 
       <section className="mb-12">
         <h2 className="text-3xl font-bold text-gray-900 mb-4">الثغرات الأخرى</h2>

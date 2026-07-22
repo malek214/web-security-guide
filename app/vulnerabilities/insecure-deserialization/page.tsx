@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import VideoSection from '@/components/VideoSection'
 
 export default function InsecureDeserializationPage() {
   return (
@@ -466,6 +467,8 @@ safe_data = SafeUnpickler(io.BytesIO(data)).load()`}
           </Link>
         </div>
       </section>
+
+      <VideoSection slug="insecure-deserialization" />
     </div>
   )
 }

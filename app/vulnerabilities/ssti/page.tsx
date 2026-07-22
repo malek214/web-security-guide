@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import VideoSection from '@/components/VideoSection'
 
 export default function SSTIPage() {
   return (
@@ -127,6 +128,8 @@ result = template.render(name=user_input)`}
           </div>
         </div>
       </section>
+
+      <VideoSection slug="ssti" />
 
       <section className="mb-12">
         <h2 className="text-3xl font-bold text-gray-900 mb-4">الثغرات الأخرى</h2>

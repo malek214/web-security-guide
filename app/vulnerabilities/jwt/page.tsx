@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import VideoSection from '@/components/VideoSection'
 
 export const metadata = {
   title: 'ثغرات JWT - JSON Web Token Vulnerabilities | دليل أمن الويب',
@@ -773,6 +774,8 @@ async function isTokenRevoked(token) {
             </div>
           </div>
         </section>
+
+        <VideoSection slug="jwt" />
 
         {/* Navigation */}
         <section id="navigation" className="mb-12">

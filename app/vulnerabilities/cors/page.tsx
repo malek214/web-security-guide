@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import VideoSection from '@/components/VideoSection'
 
 export default function CorsPage() {
   return (
@@ -762,6 +763,8 @@ if (!isSecureOrigin(origin)) {
           وفقاً لـ OWASP، تُعد ثغرات CORS Misconfiguration من أكثر الثغرات شيوعاً في تطبيقات الويب الحديثة. أثرت على منصات كبرى مثل Starbucks و Microsoft و Uber. في عام 2024، تم اكتشاف أكثر من 10,000 ثغرة CORS في مواقع الويب العامة.
         </blockquote>
       </section>
+
+      <VideoSection slug="cors" />
 
       {/* Navigation Section */}
       <section className="mt-16">

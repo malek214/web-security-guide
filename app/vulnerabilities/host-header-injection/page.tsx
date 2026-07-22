@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import VideoSection from '@/components/VideoSection'
 
 export default function HostHeaderInjectionPage() {
   return (
@@ -588,6 +589,10 @@ module.exports = {
             <p className="text-gray-600 mb-0">عدم تسجيل محاولات حقن Host header يمنع اكتشاف الهجمات</p>
           </div>
         </div>
+      </section>
+
+      <section className="mb-12">
+        <VideoSection slug="host-header-injection" />
       </section>
 
       <section className="mb-12">

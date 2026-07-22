@@ -1,4 +1,5 @@
 import Link from "next/link";
+import VideoSection from '@/components/VideoSection'
 
 export default function DNSRebindingPage() {
   return (
@@ -610,6 +611,11 @@ http://192.168.1.100:8080`}</pre>
               </p>
             </Link>
           </div>
+        </section>
+
+        {/* Video Section */}
+        <section>
+          <VideoSection slug="dns-rebinding" />
         </section>
 
         {/* Navigation */}

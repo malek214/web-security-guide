@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import VideoSection from '@/components/VideoSection'
 
 const SecurityMisconfigurationPage = () => {
   return (
@@ -804,6 +805,8 @@ module.exports = {
             </div>
           </div>
         </section>
+
+        <VideoSection slug="security-misconfiguration" />
 
         {/* Navigation Links */}
         <section>

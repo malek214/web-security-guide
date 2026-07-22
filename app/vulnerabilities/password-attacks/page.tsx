@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import VideoSection from '@/components/VideoSection'
 
 export default function PasswordAttacksPage() {
   return (
@@ -870,6 +871,8 @@ async function authenticate(username, password) {
           </div>
         </div>
       </section>
+
+      <VideoSection slug="password-attacks" />
 
       {/* Navigation Section */}
       <section className="mt-16">

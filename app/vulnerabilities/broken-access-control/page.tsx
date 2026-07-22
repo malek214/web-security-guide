@@ -1,4 +1,5 @@
 import Link from "next/link";
+import VideoSection from '@/components/VideoSection'
 
 export const metadata = {
   title: "خطأ في التحكم بالوصول - Broken Access Control | دليل أمن الويب",
@@ -406,6 +407,13 @@ res.json(invoice);`}
               </li>
             </ul>
           </div>
+        </div>
+      </section>
+
+      {/* Video Section */}
+      <section className="py-12 px-4">
+        <div className="max-w-4xl mx-auto">
+          <VideoSection slug="broken-access-control" />
         </div>
       </section>
 

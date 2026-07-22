@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import VideoSection from '@/components/VideoSection'
 
 export default function LfiPage() {
   return (
@@ -628,6 +629,8 @@ SecRule ARGS|QUERY_STRING "@rx (etc\/passwd|etc\/shadow)" \
           تُعدّ ثغرات LFI من أكثر الثغرات شيوعاً في تطبيقات PHP. وفقاً لتقارير OWASP، تُصنّف ضمن أعلى 10 ثغرات أمنية في تطبيقات الويب.
         </blockquote>
       </section>
+
+      <VideoSection slug="lfi" />
 
       {/* Navigation Section */}
       <section className="mt-16">

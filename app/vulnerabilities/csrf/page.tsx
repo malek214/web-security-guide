@@ -1,4 +1,5 @@
 import Link from "next/link";
+import VideoSection from '@/components/VideoSection'
 
 export default function CSRFPage() {
   return (
@@ -273,6 +274,10 @@ app.use('/api', checkOrigin, apiRoutes);`}
             <p className="text-gray-600 mb-0">يسمح بإرسال الكوكيز في الطلبات بين المواقع</p>
           </div>
         </div>
+      </section>
+
+      <section className="mb-12">
+        <VideoSection slug="csrf" />
       </section>
 
       <section className="mb-12">

@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import VideoSection from '@/components/VideoSection'
 
 export default function SqlInjectionPage() {
   return (
@@ -470,6 +471,10 @@ const safe = mysql.escape(input);`}</code></pre>
         <blockquote className="border-r-4 border-danger-500 pr-4 italic text-gray-600 my-6">
           وفقاً لتقارير OWASP، لا تزال SQL Injection ضمن أهم 10 ثغرات أمنية في تطبيقات الويب. في عام 2023، أثرت على أكثر من 200,000 موقع ويب.
         </blockquote>
+      </section>
+
+      <section className="mb-12">
+        <VideoSection slug="sql-injection" />
       </section>
 
       {/* Navigation Section */}

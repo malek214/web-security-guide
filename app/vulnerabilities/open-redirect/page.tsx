@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import VideoSection from '@/components/VideoSection'
 
 export default function OpenRedirectPage() {
   return (
@@ -485,6 +486,8 @@ app.get('/redirect', csrfProtection, (req, res) => {
           </Link>
         </div>
       </section>
+
+      <VideoSection slug="open-redirect" />
     </div>
   )
 }
