@@ -230,14 +230,14 @@ export default function HomePage() {
                 <span>📋</span>
               </div>
               <div>
-                <span style={{ color: '#e6edf3', fontSize: '13px', fontWeight: 'bold' }}>DOM Explorer</span>
+                <span style={{ color: '#e6edf3', fontSize: '13px', fontWeight: 'bold' }}>استكشاف الثغرات</span>
                 <span style={{ color: '#7d8590', fontSize: '11px', marginRight: '8px' }}>Security Vulnerabilities</span>
               </div>
             </div>
             <div className="flex items-center gap-3">
-              <span className="severity-high">{allVulnerabilities.filter(v => v.severity === 'critical').length} Critical</span>
-              <span className="severity-medium">{allVulnerabilities.filter(v => v.severity === 'high').length} High</span>
-              <span style={{ color: '#7d8590', fontSize: '11px' }}>{allVulnerabilities.length} items</span>
+              <span className="severity-critical">{allVulnerabilities.filter(v => v.severity === 'critical').length} حرجة</span>
+              <span className="severity-high">{allVulnerabilities.filter(v => v.severity === 'high').length} عالية</span>
+              <span style={{ color: '#7d8590', fontSize: '11px' }}>{allVulnerabilities.length} عنصر</span>
             </div>
           </div>
           
@@ -246,10 +246,10 @@ export default function HomePage() {
             {/* Header Row */}
             <div className="grid grid-cols-12 gap-4 p-3 px-5" style={{ background: '#1c2128', borderBottom: '1px solid #30363d' }} dir="ltr">
               <div style={{ color: '#7d8590', fontSize: '10px', fontWeight: '600', gridColumn: 'span 1' }}>#</div>
-              <div style={{ color: '#7d8590', fontSize: '10px', fontWeight: '600', gridColumn: 'span 4' }}>VULNERABILITY</div>
-              <div style={{ color: '#7d8590', fontSize: '10px', fontWeight: '600', gridColumn: 'span 3' }}>CATEGORY</div>
-              <div style={{ color: '#7d8590', fontSize: '10px', fontWeight: '600', gridColumn: 'span 2' }}>SEVERITY</div>
-              <div style={{ color: '#7d8590', fontSize: '10px', fontWeight: '600', gridColumn: 'span 2' }}>ACTION</div>
+              <div style={{ color: '#7d8590', fontSize: '10px', fontWeight: '600', gridColumn: 'span 4' }}>الثغرة</div>
+              <div style={{ color: '#7d8590', fontSize: '10px', fontWeight: '600', gridColumn: 'span 3' }}>الفئة</div>
+              <div style={{ color: '#7d8590', fontSize: '10px', fontWeight: '600', gridColumn: 'span 2' }}>الخطورة</div>
+              <div style={{ color: '#7d8590', fontSize: '10px', fontWeight: '600', gridColumn: 'span 2' }}>الإجراء</div>
             </div>
             
             {/* Data Rows */}
@@ -266,7 +266,7 @@ export default function HomePage() {
                     <span className={`severity-${vuln.severity}`}>{vuln.severity.toUpperCase()}</span>
                   </div>
                   <div style={{ gridColumn: 'span 2' }}>
-                    <span className="animated-underline" style={{ color: '#58a6ff', fontSize: '12px', fontWeight: '500' }}>Explore →</span>
+                    <span className="animated-underline" style={{ color: '#58a6ff', fontSize: '12px', fontWeight: '500' }}>عرض التفاصيل ←</span>
                   </div>
                 </div>
               </Link>

@@ -38,25 +38,25 @@ export default function RootLayout({
                 </a>
                 <nav className="hidden md:flex items-center gap-1">
                   <a href="/" className="devtools-tab active">
-                    <span>🔍</span> Elements
+                    <span>🔍</span> الرئيسية
                   </a>
                   <a href="/fundamentals" className="devtools-tab">
-                    <span>📖</span> Console
+                    <span>📖</span> الأساسيات
                   </a>
                   <a href="/vulnerabilities/sql-injection" className="devtools-tab">
-                    <span>⚡</span> Sources
+                    <span>⚡</span> الثغرات
                   </a>
                   <a href="/owasp-top-10" className="devtools-tab">
-                    <span>🌐</span> Network
+                    <span>🌐</span> OWASP
                   </a>
                   <a href="/bug-bounty" className="devtools-tab">
-                    <span>🎯</span> Application
+                    <span>🎯</span> Bug Bounty
                   </a>
                   <a href="/career-path" className="devtools-tab">
-                    <span>📦</span> Lighthouse
+                    <span>📦</span> المسار الوظيفي
                   </a>
                   <a href="/glossary" className="devtools-tab">
-                    <span>💾</span> Storage
+                    <span>💾</span> المصطلحات
                   </a>
                 </nav>
               </div>
@@ -147,15 +147,15 @@ export default function RootLayout({
                   <div className="flex items-center gap-4">
                     <span className="flex items-center gap-2">
                       <span className="w-2 h-2 rounded-full pulse-glow" style={{ background: '#3fb950' }}></span>
-                      <span style={{ color: '#7d8590', fontSize: '11px' }}>Security Score: 95/100</span>
+                      <span style={{ color: '#7d8590', fontSize: '11px' }}>نقاط الأمان: 95/100</span>
                     </span>
                     <span style={{ color: '#30363d' }}>|</span>
                     <span style={{ color: '#7d8590', fontSize: '11px' }}>WebSec DevTools v2.0</span>
                   </div>
                   <div className="flex items-center gap-4">
-                    <span style={{ color: '#7d8590', fontSize: '11px' }}>© 2024 Web Security Guide</span>
+                    <span style={{ color: '#7d8590', fontSize: '11px' }}>© 2024 دليل أمن المواقع</span>
                     <span style={{ color: '#30363d' }}>|</span>
-                    <span style={{ color: '#58a6ff', fontSize: '11px' }}>Built with Next.js</span>
+                    <span style={{ color: '#58a6ff', fontSize: '11px' }}>تم بناؤه بـ Next.js</span>
                   </div>
                 </div>
               </div>
