@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import VideoSection from '@/components/VideoSection'
+import ToolsSection from '@/components/ToolsSection'
 
 export default function DenialOfServicePage() {
   return (
@@ -129,6 +130,10 @@ app.use(express.json({ limit: '10kb' }));`}
             <p className="text-gray-600 mb-0">تحديد الحد الأقصى لاستهلاك CPU والذاكرة</p>
           </div>
         </div>
+      </section>
+
+      <section className="mb-12">
+        <ToolsSection slug="denial-of-service" />
       </section>
 
       <section className="mb-12">

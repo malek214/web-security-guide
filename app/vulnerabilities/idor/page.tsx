@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import VideoSection from '@/components/VideoSection'
+import ToolsSection from '@/components/ToolsSection'
 
 export default function IdorPage() {
   return (
@@ -124,6 +125,7 @@ app.get('/api/invoice/:id', authenticate, (req, res) => {
         </div>
       </section>
 
+      <ToolsSection slug="idor" />
       <VideoSection slug="idor" />
     </div>
   )

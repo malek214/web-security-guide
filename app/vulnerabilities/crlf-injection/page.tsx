@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import VideoSection from '@/components/VideoSection'
+import ToolsSection from '@/components/ToolsSection'
 
 export default function CRLFInjectionPage() {
   return (
@@ -104,6 +105,10 @@ app.use(helmet());`}
             <p className="text-gray-600 mb-0">استخدام أحدث إصدارات الأطر التي تعالج هذه الثغرة</p>
           </div>
         </div>
+      </section>
+
+      <section className="mb-12">
+        <ToolsSection slug="crlf-injection" />
       </section>
 
       <VideoSection slug="crlf-injection" />

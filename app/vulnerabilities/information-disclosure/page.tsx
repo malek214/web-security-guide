@@ -1,5 +1,6 @@
 import Link from "next/link";
 import VideoSection from '@/components/VideoSection'
+import ToolsSection from '@/components/ToolsSection'
 
 export const metadata = {
   title: "الكشف عن المعلومات - Information Disclosure | دليل أمن الويب",
@@ -843,6 +844,11 @@ export default function InformationDisclosurePage() {
               </p>
             </Link>
           </div>
+        </section>
+
+        {/* Tools Section */}
+        <section className="mb-16">
+          <ToolsSection slug="information-disclosure" />
         </section>
 
         {/* Video Section */}

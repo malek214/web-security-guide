@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import VideoSection from '@/components/VideoSection'
+import ToolsSection from '@/components/ToolsSection'
 
 export default function CommandInjectionPage() {
   return (
@@ -645,6 +646,10 @@ docker run --rm -it \\
         <blockquote className="border-r-4 border-danger-500 pr-4 italic text-gray-600 my-6">
           حسب تصنيف OWASP Top 10، تُعتبر Command Injection من أكثر الثغرات خطورة لأنها يمكن أن تؤدي إلى سيطرة كاملة على الخادم المستضيف. في كثير من الحالات، يمكن للمهاجم الحصول على shell كامل على النظام.
         </blockquote>
+      </section>
+
+      <section className="mb-12">
+        <ToolsSection slug="command-injection" />
       </section>
 
       <section className="mb-12">

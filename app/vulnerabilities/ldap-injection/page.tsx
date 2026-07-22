@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import VideoSection from '@/components/VideoSection'
+import ToolsSection from '@/components/ToolsSection'
 
 export default function LdapInjectionPage() {
   return (
@@ -665,6 +666,10 @@ using (var searcher = new DirectorySearcher(entry))
         <blockquote className="border-r-4 border-danger-500 pr-4 italic text-gray-600 my-6">
           تُعتبر ثغرات LDAP Injection خطيرة خاصة في بيئات المؤسسات التي تعتمد بشكل كبير على Active Directory لإدارة المستخدمين والصلاحيات. يمكن أن يؤدي استغلالها إلى سيطرة كاملة على الـ domain.
         </blockquote>
+      </section>
+
+      <section className="mb-12">
+        <ToolsSection slug="ldap-injection" />
       </section>
 
       <VideoSection slug="ldap-injection" />

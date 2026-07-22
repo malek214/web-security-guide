@@ -1,5 +1,6 @@
 import Link from "next/link";
 import VideoSection from '@/components/VideoSection'
+import ToolsSection from '@/components/ToolsSection'
 
 export default function SubdomainTakeoverPage() {
   return (
@@ -520,6 +521,11 @@ curl -I https://old-app.example.com
               </li>
             </ul>
           </div>
+        </section>
+
+        {/* Tools Section */}
+        <section className="mb-12">
+          <ToolsSection slug="subdomain-takeover" />
         </section>
 
         {/* Video Section */}

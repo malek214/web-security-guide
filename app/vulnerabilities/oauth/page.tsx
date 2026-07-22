@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import VideoSection from '@/components/VideoSection'
+import ToolsSection from '@/components/ToolsSection'
 
 export const metadata = {
   title: 'ثغرات OAuth - OAuth Vulnerabilities | دليل أمن الويب',
@@ -1182,6 +1183,7 @@ app.post('/api/auth/logout', async (req, res) => {
           </div>
         </section>
 
+        <ToolsSection slug="oauth" />
         <VideoSection slug="oauth" />
 
         {/* Navigation */}

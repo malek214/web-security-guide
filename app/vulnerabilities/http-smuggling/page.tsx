@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import VideoSection from '@/components/VideoSection'
+import ToolsSection from '@/components/ToolsSection'
 
 export default function HttpSmugglingPage() {
   return (
@@ -450,6 +451,10 @@ SecRule &REQUEST_HEADERS:Transfer-Encoding "@gt 0" \\
             <p className="text-gray-600 mb-0">عدم اختبار ثغرة التهريب بشكل دوري يترك الثغرة دون اكتشاف</p>
           </div>
         </div>
+      </section>
+
+      <section className="mb-12">
+        <ToolsSection slug="http-smuggling" />
       </section>
 
       <section className="mb-12">

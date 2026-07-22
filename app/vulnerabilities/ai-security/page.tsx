@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import VideoSection from '@/components/VideoSection'
+import ToolsSection from '@/components/ToolsSection'
 
 export default function AiSecurityPage() {
   return (
@@ -122,6 +123,8 @@ def chatbot(user_input):
           <li><strong>السجلات:</strong> تسجيل جميع التفاعلات للكشف عن محاولات الاختراق</li>
         </ul>
       </section>
+
+      <ToolsSection slug="ai-security" />
 
       <VideoSection slug="ai-security" />
 

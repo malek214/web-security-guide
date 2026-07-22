@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import VideoSection from '@/components/VideoSection'
+import ToolsSection from '@/components/ToolsSection'
 
 export default function SSTIPage() {
   return (
@@ -127,6 +128,10 @@ result = template.render(name=user_input)`}
             <p className="text-gray-600 mb-0">استخدم أحدث إصدارات محركات القوالب</p>
           </div>
         </div>
+      </section>
+
+      <section className="mb-12">
+        <ToolsSection slug="ssti" />
       </section>
 
       <VideoSection slug="ssti" />

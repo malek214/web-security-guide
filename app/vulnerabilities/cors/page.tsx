@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import VideoSection from '@/components/VideoSection'
+import ToolsSection from '@/components/ToolsSection'
 
 export default function CorsPage() {
   return (
@@ -764,6 +765,7 @@ if (!isSecureOrigin(origin)) {
         </blockquote>
       </section>
 
+      <ToolsSection slug="cors" />
       <VideoSection slug="cors" />
 
       {/* Navigation Section */}

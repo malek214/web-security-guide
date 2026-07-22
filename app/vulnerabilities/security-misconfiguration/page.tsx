@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import VideoSection from '@/components/VideoSection'
+import ToolsSection from '@/components/ToolsSection'
 
 const SecurityMisconfigurationPage = () => {
   return (
@@ -806,6 +807,7 @@ module.exports = {
           </div>
         </section>
 
+        <ToolsSection slug="security-misconfiguration" />
         <VideoSection slug="security-misconfiguration" />
 
         {/* Navigation Links */}

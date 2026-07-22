@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import VideoSection from '@/components/VideoSection'
+import ToolsSection from '@/components/ToolsSection'
 
 export default function FileUploadPage() {
   return (
@@ -122,6 +123,8 @@ move_uploaded_file($_FILES["file"]["tmp_name"], $target);
           <li><strong>تعطيل تنفيذ PHP:</strong> عطّل تنفيذ ملفات PHP في مجلد الرفع</li>
         </ul>
       </section>
+
+      <ToolsSection slug="file-upload" />
 
       <VideoSection slug="file-upload" />
 

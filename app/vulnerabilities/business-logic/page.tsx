@@ -1,5 +1,6 @@
 import Link from "next/link";
 import VideoSection from '@/components/VideoSection'
+import ToolsSection from '@/components/ToolsSection'
 
 export default function BusinessLogicPage() {
   return (
@@ -890,6 +891,10 @@ app.post('/api/payment', async (req, res) => {
             </p>
           </div>
         </div>
+      </section>
+
+      <section className="mb-12">
+        <ToolsSection slug="business-logic" />
       </section>
 
       <section className="mb-12">

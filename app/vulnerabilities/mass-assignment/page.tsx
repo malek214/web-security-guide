@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import VideoSection from '@/components/VideoSection'
+import ToolsSection from '@/components/ToolsSection'
 
 export default function MassAssignmentPage() {
   return (
@@ -93,6 +94,10 @@ user_params = params.require(:user).permit(:name, :email, :password)
             <p className="text-gray-600 mb-0">استخدم كائنات نقل البيانات بدلاً من النماذج المباشرة</p>
           </div>
         </div>
+      </section>
+
+      <section className="mb-12">
+        <ToolsSection slug="mass-assignment" />
       </section>
 
       <section className="mb-12">

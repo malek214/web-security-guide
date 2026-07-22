@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import VideoSection from '@/components/VideoSection'
+import ToolsSection from '@/components/ToolsSection'
 
 export default function ApiSecurityPage() {
   return (
@@ -929,6 +930,7 @@ app.get('/api/users/:id', authenticate, async (req, res) => {
         </ul>
       </section>
 
+      <ToolsSection slug="api-security" />
       <VideoSection slug="api-security" />
 
       {/* Navigation Section */}
