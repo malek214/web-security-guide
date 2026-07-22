@@ -5,42 +5,9 @@ import './globals.css'
 import SearchComponent from '@/components/SearchComponent'
 
 export const metadata: Metadata = {
-  title: 'دليل أمن المواقع الإلكترونية - حماية موقعك من الثغرات',
-  description: 'دليل شامل لشرح ثغرات أمن المواقع الإلكترونية وطرق إصلاحها مع أمثلة عملية وأدوات فحص',
-  keywords: ['أمن المواقع', 'ثغرات أمنية', 'SQL Injection', 'XSS', 'CSRF', 'أمن سيبراني', 'حماية المواقع'],
-  authors: [{ name: 'فريق أمن المواقع' }],
-  creator: 'فريق أمن المواقع',
-  publisher: 'دليل أمن المواقع',
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
-  },
-  metadataBase: new URL('https://web-security-guide.vercel.app'),
-  openGraph: {
-    title: 'دليل أمن المواقع الإلكترونية',
-    description: 'دليل شامل لشرح ثغرات أمن المواقع الإلكترونية وطرق إصلاحها',
-    url: 'https://web-security-guide.vercel.app',
-    siteName: 'دليل أمن المواقع',
-    locale: 'ar_SA',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'دليل أمن المواقع الإلكترونية',
-    description: 'دليل شامل لشرح ثغرات أمن المواقع الإلكترونية وطرق إصلاحها',
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
-  },
+  title: 'WebSec DevTools - دليل أمن المواقع',
+  description: 'أدوات مطورين لأمن المواقع الإلكترونية - شرح الثغرات والأدوات والحماية',
+  keywords: ['أمن المواقع', 'ثغرات أمنية', 'DevTools', 'Security', 'Web Security'],
 }
 
 export default function RootLayout({
@@ -52,81 +19,74 @@ export default function RootLayout({
     <html lang="ar" dir="rtl" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <link rel="manifest" href="/site.webmanifest" />
       </head>
-      <body className="min-h-screen bg-white dark:bg-gray-900">
+      <body className="min-h-screen" style={{ background: '#1e1e1e', color: '#cccccc' }}>
         <ThemeProvider>
-          <header className="bg-gray-900 dark:bg-gray-950 text-white sticky top-0 z-50">
-            <nav className="container mx-auto px-4 py-4">
-              <div className="flex items-center justify-between">
-                <a href="/" className="text-xl font-bold flex items-center gap-2">
-                  <span className="text-2xl">🛡️</span>
-                  <span>أمن المواقع</span>
-                </a>
-                <div className="hidden md:flex items-center gap-4 text-sm">
-                  <a href="/" className="hover:text-primary-400 transition-colors">الرئيسية</a>
-                  <a href="/fundamentals" className="hover:text-primary-400 transition-colors">الأساسيات</a>
-                  <a href="/vulnerabilities/sql-injection" className="hover:text-primary-400 transition-colors">الثغرات</a>
-                  <a href="/owasp-top-10" className="hover:text-primary-400 transition-colors">OWASP</a>
-                  <a href="/bug-bounty" className="hover:text-primary-400 transition-colors">Bug Bounty</a>
-                  <a href="/blog" className="hover:text-primary-400 transition-colors">المدونة</a>
-                  <a href="/interview-questions" className="hover:text-primary-400 transition-colors">أسئلة المقابلات</a>
-                  <a href="/ctf" className="hover:text-primary-400 transition-colors">تحديات CTF</a>
-                  <a href="/career-path" className="hover:text-primary-400 transition-colors">المسار الوظيفي</a>
-                  <a href="/glossary" className="hover:text-primary-400 transition-colors">القاموس</a>
+          {/* DevTools Top Bar */}
+          <header style={{ background: '#323233', borderBottom: '1px solid #3c3c3c' }}>
+            <div className="flex items-center justify-between px-4 py-1">
+              {/* Left: Logo & Tabs */}
+              <div className="flex items-center gap-4">
+                <div className="flex items-center gap-2">
+                  <span className="text-lg">🛡️</span>
+                  <span className="font-bold text-sm" style={{ color: '#cccccc' }}>WebSec DevTools</span>
                 </div>
+                <nav className="hidden md:flex items-center gap-1">
+                  <a href="/" className="devtools-tab active">
+                    <span>🔍</span> Elements
+                  </a>
+                  <a href="/fundamentals" className="devtools-tab">
+                    <span>📖</span> Console
+                  </a>
+                  <a href="/vulnerabilities/sql-injection" className="devtools-tab">
+                    <span>⚡</span> Sources
+                  </a>
+                  <a href="/owasp-top-10" className="devtools-tab">
+                    <span>🌐</span> Network
+                  </a>
+                  <a href="/bug-bounty" className="devtools-tab">
+                    <span>🎯</span> Application
+                  </a>
+                  <a href="/career-path" className="devtools-tab">
+                    <span>📦</span> Lighthouse
+                  </a>
+                  <a href="/glossary" className="devtools-tab">
+                    <span>💾</span> Storage
+                  </a>
+                </nav>
+              </div>
+              {/* Right: Search & Theme */}
+              <div className="flex items-center gap-3">
                 <div className="hidden md:block w-64">
                   <SearchComponent compact />
                 </div>
-                <div className="flex items-center gap-3">
-                  <ThemeToggle />
-                  <button className="md:hidden text-2xl" aria-label="القائمة">
-                    ☰
-                  </button>
-                </div>
+                <ThemeToggle />
               </div>
-            </nav>
+            </div>
           </header>
-          <main className="container mx-auto px-4 py-8">
+
+          {/* Main Content */}
+          <main className="min-h-[calc(100vh-32px)]">
             {children}
           </main>
-          <footer className="bg-gray-900 dark:bg-gray-950 text-white py-8 mt-16">
-            <div className="container mx-auto px-4">
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div>
-                  <h3 className="text-lg font-bold mb-4">🛡️ أمن المواقع</h3>
-                  <p className="text-gray-400">دليلك الشامل لحماية المواقع الإلكترونية من الثغرات الأمنية</p>
-                </div>
-                <div>
-                  <h4 className="font-bold mb-4">روابط سريعة</h4>
-                  <ul className="space-y-2 text-gray-400">
-                    <li><a href="/" className="hover:text-white transition-colors">الرئيسية</a></li>
-                    <li><a href="/vulnerabilities/sql-injection" className="hover:text-white transition-colors">أنواع الثغرات</a></li>
-                    <li><a href="/tools" className="hover:text-white transition-colors">أدوات الفحص</a></li>
-                  </ul>
-                </div>
-                <div>
-                  <h4 className="font-bold mb-4">موارد تعليمية</h4>
-                  <ul className="space-y-2 text-gray-400">
-                    <li><a href="/best-practices" className="hover:text-white transition-colors">أفضل الممارسات</a></li>
-                    <li><a href="/resources" className="hover:text-white transition-colors">مصادر تعليمية</a></li>
-                    <li><a href="/blog" className="hover:text-white transition-colors">المدونة</a></li>
-                    <li><a href="/interview-questions" className="hover:text-white transition-colors">أسئلة المقابلات</a></li>
-                    <li><a href="/ctf" className="hover:text-white transition-colors">تحديات CTF</a></li>
-                    <li><a href="/faq" className="hover:text-white transition-colors">أسئلة متكررة</a></li>
-                  </ul>
-                </div>
-                <div>
-                  <h4 className="font-bold mb-4">تواصل معنا</h4>
-                  <ul className="space-y-2 text-gray-400">
-                    <li><a href="/contact" className="hover:text-white transition-colors">صفحة التواصل</a></li>
-                    <li><a href="/report" className="hover:text-white transition-colors">إرسال تقرير</a></li>
-                  </ul>
-                </div>
+
+          {/* DevTools Bottom Bar */}
+          <footer style={{ background: '#007acc', color: 'white', fontSize: '12px', padding: '4px 12px' }}>
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-4">
+                <span className="flex items-center gap-1">
+                  <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#4ec9b0', display: 'inline-block' }}></span>
+                  Security Score: 95/100
+                </span>
+                <span>|</span>
+                <span>40 Vulnerabilities</span>
+                <span>|</span>
+                <span>63 Pages</span>
               </div>
-              <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-                <p>© {new Date().getFullYear()} دليل أمن المواقع الإلكترونية. جميع الحقوق محفوظة.</p>
+              <div className="flex items-center gap-4">
+                <span>WebSec DevTools v2.0</span>
+                <span>|</span>
+                <span>© 2024 Web Security Guide</span>
               </div>
             </div>
           </footer>
