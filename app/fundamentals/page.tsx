@@ -77,12 +77,66 @@ const fundamentals = [
     title: 'أنواع الهجمات الشائعة',
     description: 'هناك العديد من أنواع الهجمات التي يجب أن تكون على دراية بها.',
     attacks: [
-      { name: 'Phishing', desc: 'رسائل مزيفة لسرقة البيانات', icon: '🎣', slug: 'phishing' },
-      { name: 'Malware', desc: 'برمجيات خبيثة', icon: '🦠', slug: 'malware' },
-      { name: 'DDoS', desc: 'حجب الخدمة الموزع', icon: '💥', slug: 'denial-of-service' },
-      { name: 'SQL Injection', desc: 'حقن أكواد SQL', icon: '💉', slug: 'sql-injection' },
-      { name: 'XSS', desc: 'حقن نصوص', icon: '📜', slug: 'xss' },
-      { name: 'Social Engineering', desc: 'الهندسة الاجتماعية', icon: '🧠', slug: 'social-engineering' },
+      { 
+        name: 'Phishing', 
+        desc: 'رسائل مزيفة لسرقة البيانات', 
+        icon: '🎣', 
+        slug: 'phishing',
+        howItWorks: 'مهاجم ينتحل شخصية جهة موثوقة (بنك، شركة، شخص) لإرسال رسائل أو مواقع مزيفة لسرقة كلمات المرور أو البيانات الحساسة.',
+        risks: 'سرقة كلمات المرور، بيانات الائتمان، هوية المستخدم، انتشار البرمجيات الخبيثة.',
+        protection: 'التحقق من المرسل، عدم النقر على الروابط المشبوهة، استخدام MFA، التدريب المستمر.',
+        tools: ['Gophish', 'King Phisher', 'SET']
+      },
+      { 
+        name: 'Malware', 
+        desc: 'برمجيات خبيثة', 
+        icon: '🦠', 
+        slug: 'malware',
+        howItWorks: 'برنامج ضار يُثبَّت على الجهاز بدون علم المستخدم لسرقة البيانات أو تدمير الملفات أو التحكم في النظام.',
+        risks: 'سرقة البيانات، تشفير الملفات (Ransomware)، مراقبة المستخدم، تعطيل النظام.',
+        protection: 'تحديث antivirus، عدم تحميل ملفات مشبوهة، استخدام防火墙، النسخ الاحتياطي.',
+        tools: ['Malwarebytes', 'VirusTotal', 'Wireshark']
+      },
+      { 
+        name: 'DDoS', 
+        desc: 'حجب الخدمة الموزع', 
+        icon: '💥', 
+        slug: 'denial-of-service',
+        howItWorks: 'إغراء الخادم بطلبات وهمية من مصادر متعددة لتعطيل الخدمة ومنع المستخدمين الشرعيين من الوصول.',
+        risks: 'تعطيل الموقع، خسائر مالية، تلف السمعة، فقدان البيانات.',
+        protection: 'استخدام CDNs، Rate Limiting، Firewalls، خوادم موزعة.',
+        tools: ['LOIC', 'HULK', 'Cloudflare']
+      },
+      { 
+        name: 'SQL Injection', 
+        desc: 'حقن أكواد SQL', 
+        icon: '💉', 
+        slug: 'sql-injection',
+        howItWorks: 'حقن أكواد SQL ضارة في مدخلات التطبيق للتحكم في قاعدة البيانات وسرقة أو تعديل البيانات.',
+        risks: 'سرقة جميع البيانات، حذف قاعدة البيانات، تجاوز المصادقة، تنفيذ أوامر.',
+        protection: 'Prepared Statements، تنقية المدخلات، تحديث المكتبات، مبدأ الصلاحية الأدنى.',
+        tools: ['SQLMap', 'Burp Suite', 'Havij']
+      },
+      { 
+        name: 'XSS', 
+        desc: 'حقن نصوص', 
+        icon: '📜', 
+        slug: 'xss',
+        howItWorks: 'حقن سكريبتات ضارة في صفحات الويب لتنفيذها على متصفح المستخدم وسرقة الكوكيز أو الجلسات.',
+        risks: 'سرقة الجلسات، تزوير الطلبات، تنصت على المستخدم، تشويه الموقع.',
+        protection: 'تنقية المدخلات، CSP Headers، تنقية المخرجات، HttpOnly Cookies.',
+        tools: ['XSStrike', 'Dalfox', 'Burp Suite']
+      },
+      { 
+        name: 'Social Engineering', 
+        desc: 'الهندسة الاجتماعية', 
+        icon: '🧠', 
+        slug: 'social-engineering',
+        howItWorks: 'التأثير النفسي على الضحية لإقناعه بعمل شيء يضر به (مثل مشاركة كلمة المرور أو تثبيت برنامج ضار).',
+        risks: 'سرقة بيانات، اختراق أنظمة، خسائر مالية، تسريب معلومات حساسة.',
+        protection: 'التدريب والتوعية، التحقق من الهوية، سياسات الأمان الصارمة.',
+        tools: ['SET', 'SocialFish', 'BlackEye']
+      },
     ],
   },
 ];
@@ -212,13 +266,49 @@ export default function FundamentalsPage() {
             <h2 className="text-2xl font-bold">{fundamentals[4]?.title}</h2>
           </div>
           <p className="text-gray-600 mb-6">{fundamentals[4]?.description}</p>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+          
+          <div className="space-y-6">
             {fundamentals[4]?.attacks?.map((a) => (
-              <Link key={a.name} href={`/vulnerabilities/${a.slug}`} className="bg-gray-50 p-4 rounded-lg hover:shadow-md transition-shadow">
-                <span className="text-3xl block mb-2">{a.icon}</span>
-                <h4 className="font-bold">{a.name}</h4>
-                <p className="text-sm text-gray-600">{a.desc}</p>
-              </Link>
+              <div key={a.name} className="border border-gray-200 rounded-xl overflow-hidden">
+                <div className="bg-gradient-to-r from-gray-50 to-gray-100 p-4">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <span className="text-3xl">{a.icon}</span>
+                      <div>
+                        <h4 className="font-bold text-lg">{a.name}</h4>
+                        <p className="text-sm text-gray-600">{a.desc}</p>
+                      </div>
+                    </div>
+                    <Link href={`/vulnerabilities/${a.slug}`} className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-blue-700 transition-colors">
+                      التفاصيل ←
+                    </Link>
+                  </div>
+                </div>
+                <div className="p-4 bg-white">
+                  <div className="grid md:grid-cols-3 gap-4">
+                    <div>
+                      <h5 className="font-bold text-sm text-gray-700 mb-2">📌 كيف يعمل؟</h5>
+                      <p className="text-xs text-gray-600">{a.howItWorks}</p>
+                    </div>
+                    <div>
+                      <h5 className="font-bold text-sm text-red-700 mb-2">⚠️ المخاطر</h5>
+                      <p className="text-xs text-gray-600">{a.risks}</p>
+                    </div>
+                    <div>
+                      <h5 className="font-bold text-sm text-green-700 mb-2">🛡️ الحماية</h5>
+                      <p className="text-xs text-gray-600">{a.protection}</p>
+                    </div>
+                  </div>
+                  <div className="mt-3 pt-3 border-t border-gray-100">
+                    <h5 className="font-bold text-sm text-purple-700 mb-2">🔧 أفضل الأدوات</h5>
+                    <div className="flex flex-wrap gap-2">
+                      {a.tools?.map((tool) => (
+                        <span key={tool} className="bg-purple-100 text-purple-700 px-2 py-1 rounded text-xs">{tool}</span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
             ))}
           </div>
         </div>
