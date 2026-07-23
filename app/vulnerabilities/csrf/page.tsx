@@ -1,70 +1,44 @@
-import Link from "next/link";
+import VulnerabilityLayout, { VulnSection, CodeBlock, InfoBox, ListItem } from '@/components/VulnerabilityLayout'
 import VideoSection from '@/components/VideoSection'
 import ToolsSection from '@/components/ToolsSection'
-import ShareButtons from '@/components/ShareButtons'
 import LabsSection from '@/components/LabsSection'
 import Quiz from '@/components/Quiz'
+import ShareButtons from '@/components/ShareButtons'
 
 export default function CSRFPage() {
   return (
-    <div dir="rtl" className="max-w-4xl mx-auto prose prose-lg">
-      <nav className="mb-8 text-sm text-gray-500">
-        <Link href="/" className="hover:text-primary-600 transition">الرئيسية</Link>
-        <span className="mx-2">/</span>
-        <span className="text-gray-900">CSRF</span>
-      </nav>
+    <VulnerabilityLayout
+      icon="🎣"
+      titleAr="تزوير الطلبات بين المواقع"
+      titleEn="Cross-Site Request Forgery (CSRF)"
+      severity="high"
+      owasp="A1:2021"
+    >
+      <ShareButtons title="CSRF - تزوير الطلبات" url="https://web-security-guide.vercel.app/vulnerabilities/csrf" />
 
-      <header className="mb-12">
-        <div className="flex items-center gap-3 mb-4">
-          <span className="text-5xl">&#x1F3A3;</span>
-          <div>
-            <h1 className="text-4xl font-bold text-gray-900 mb-0">تزوير الطلبات بين المواقع</h1>
-            <p className="text-xl text-gray-500 mt-1">Cross-Site Request Forgery (CSRF)</p>
-          </div>
-        </div>
-        <div className="bg-danger-50 border border-danger-200 rounded-lg p-4 mb-6">
-          <p className="text-danger-700 font-semibold mb-0">
-            &#x26A0; مستوى الخطورة: عالي
-          </p>
-        </div>
-      </header>
-
-      <div className="mb-6">
-        <ShareButtons title="CSRF - تزوير الطلبات" url={"https://web-security-guide.vercel.app/vulnerabilities/csrf"} />
-      </div>
-
-      <section className="mb-12">
-        <h2 className="text-3xl font-bold text-gray-900 mb-4">تعريف CSRF</h2>
-        <p>
+      <VulnSection title="تعريف CSRF" icon="📖">
+        <p style={{ color: '#cccccc', fontSize: '14px', lineHeight: '1.8' }}>
           تزوير الطلبات بين المواقع (CSRF) هو ثغرة أمنية تسمح للمهاجم بإجبار متصفح المستخدم على إرسال طلب HTTP مزور إلى تطبيق ويب آخر دون علم المستخدم أو موافقته.
         </p>
-        <p>
+        <p style={{ color: '#cccccc', fontSize: '14px', lineHeight: '1.8', marginTop: '8px' }}>
           يستغل المهاجم الثقة التي يوليها التطبيق لمصادقات المستخدم (مثل ملفات تعريف الارتباط الجلسة). عندما يزور المستخدم موقع المهاجم أو صفحة تحتوي على كود مغرض، يتم إرسال طلب تلقائي إلى التطبيق المستهدف باستخدام جلسة المستخدم الحالية.
         </p>
-      </section>
+      </VulnSection>
 
-      <section className="mb-12">
-        <h2 className="text-3xl font-bold text-gray-900 mb-4">كيف تعمل هجمات CSRF</h2>
-        <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-6">
-          <ol className="list-decimal mr-6 space-y-2">
-            <li>يلogue المستخدم إلى موقع الويب المستهدف (مثل البنك الإلكتروني)</li>
-            <li>يخزّن المتصفح ملف تعريف الارتباط (Session Cookie) للصيانة</li>
-            <li>يزور المستخدم موقع المهاجم أو صفحة تحتوي على كود مغرض</li>
-            <li>يتم إرسال طلب HTTP مزور تلقائياً إلى الموقع المستهدف</li>
-            <li>يرسل المتصفح ملف تعريف الارتباط مع الطلب تلقائياً</li>
-            <li>يقبل الموقع الطلب لأنه يحمل ملف تعريف الارتباط الصحيح</li>
-          </ol>
-        </div>
-      </section>
+      <VulnSection title="كيف تعمل هجمات CSRF" icon="🔍">
+        <InfoBox type="info">
+          <strong>خطوات الهجوم:</strong>
+        </InfoBox>
+        <ListItem>يلogue المستخدم إلى موقع الويب المستهدف (مثل البنك الإلكتروني)</ListItem>
+        <ListItem>يخزّن المتصفح ملف تعريف الارتباط (Session Cookie) للصيانة</ListItem>
+        <ListItem>يزور المستخدم موقع المهاجم أو صفحة تحتوي على كود مغرض</ListItem>
+        <ListItem>يتم إرسال طلب HTTP مزور تلقائياً إلى الموقع المستهدف</ListItem>
+        <ListItem>يرسل المتصفح ملف تعريف الارتباط مع الطلب تلقائياً</ListItem>
+        <ListItem>يقبل الموقع الطلب لأنه يحمل ملف تعريف الارتباط الصحيح</ListItem>
+      </VulnSection>
 
-      <section className="mb-12">
-        <h2 className="text-3xl font-bold text-gray-900 mb-4">أمثلة على الهجمات</h2>
-
-        <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-6">
-          <h3 className="text-xl font-bold text-gray-800 mb-3">1. نموذج بنكي مخفي</h3>
-          <div className="bg-gray-900 text-gray-100 p-4 rounded-lg">
-            <pre className="text-sm">
-{`<!-- صفحة مغرضة تحتوي على نموذج مخفي -->
+      <VulnSection title="أمثلة على الهجمات" icon="💻">
+        <CodeBlock title="1. نموذج بنكي مخفي" code={`<!-- صفحة مغرضة تحتوي على نموذج مخفي -->
 <html>
 <body onload="document.getElementById('csrf-form').submit()">
   <form id="csrf-form" action="https://bank.com/transfer" method="POST">
@@ -72,60 +46,30 @@ export default function CSRFPage() {
     <input type="hidden" name="amount" value="10000" />
   </form>
 </body>
-</html>`}
-            </pre>
-          </div>
-        </div>
+</html>`} />
 
-        <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-6">
-          <h3 className="text-xl font-bold text-gray-800 mb-3">2. صورة مغرضة</h3>
-          <div className="bg-gray-900 text-gray-100 p-4 rounded-lg">
-            <pre className="text-sm">
-{`<!-- استخدام وسم صورة لإرسال طلب GET مزور -->
+        <CodeBlock title="2. صورة مغرضة" code={`<!-- استخدام وسم صورة لإرسال طلب GET مزور -->
 <img src="https://bank.com/transfer?to=attacker&amount=10000"
-     style="display:none" />`}
-            </pre>
-          </div>
-        </div>
+     style="display:none" />`} />
 
-        <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-6">
-          <h3 className="text-xl font-bold text-gray-800 mb-3">3. JavaScript مخفي</h3>
-          <div className="bg-gray-900 text-gray-100 p-4 rounded-lg">
-            <pre className="text-sm">
-{`<!-- كود JavaScript مخفي في صفحة -->
+        <CodeBlock title="3. JavaScript مخفي" code={`<!-- كود JavaScript مخفي في صفحة -->
 <script>
   var xhr = new XMLHttpRequest();
   xhr.open("POST", "https://bank.com/transfer", true);
   xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
   xhr.send("to=attacker&amount=10000");
-</script>`}
-            </pre>
-          </div>
-        </div>
-      </section>
+</script>`} />
+      </VulnSection>
 
-      <section className="mb-12">
-        <h2 className="text-3xl font-bold text-gray-900 mb-4">أمثلة كود مصاب ومحصن</h2>
-
-        <div className="bg-danger-50 border border-danger-200 rounded-lg p-6 mb-6">
-          <h3 className="text-xl font-bold text-danger-700 mb-3">&#x274C; كود مصاب - نموذج بدون حماية</h3>
-          <div className="bg-gray-900 text-gray-100 p-4 rounded-lg">
-            <pre className="text-sm">
-{`<!-- نموذج تحويل بنكي بدون CSRF Token -->
+      <VulnSection title="أمثلة كود مصاب ومحصن" icon="💻">
+        <CodeBlock title="❌ كود مصاب - نموذج بدون حماية" variant="vulnerable" code={`<!-- نموذج تحويل بنكي بدون CSRF Token -->
 <form action="/transfer" method="POST">
   <input type="text" name="to" placeholder="الحساب المستلم" />
   <input type="number" name="amount" placeholder="المبلغ" />
   <button type="submit">تحويل</button>
-</form>`}
-            </pre>
-          </div>
-        </div>
+</form>`} />
 
-        <div className="bg-success-50 border border-success-200 rounded-lg p-6 mb-6">
-          <h3 className="text-xl font-bold text-success-700 mb-3">&#x2705; كود محصن - نموذج مع CSRF Token</h3>
-          <div className="bg-gray-900 text-gray-100 p-4 rounded-lg">
-            <pre className="text-sm">
-{`<!-- نموذج مع CSRF Token -->
+        <CodeBlock title="✅ كود محصن - نموذج مع CSRF Token" variant="secure" code={`<!-- نموذج مع CSRF Token -->
 <form action="/transfer" method="POST">
   <input type="hidden" name="_csrf" value="{{csrfToken}}" />
   <input type="text" name="to" placeholder="الحساب المستلم" />
@@ -144,25 +88,14 @@ app.get('/transfer', csrfProtection, (req, res) => {
 app.post('/transfer', csrfProtection, (req, res) => {
   // يتم التحقق من CSRF Token تلقائياً
   // إذا كان الطلب مزوراً، سيرفض
-});`}
-            </pre>
-          </div>
-        </div>
-      </section>
+});`} />
+      </VulnSection>
 
-      <section className="mb-12">
-        <h2 className="text-3xl font-bold text-gray-900 mb-4">طرق الحماية</h2>
-
-        <div className="space-y-6">
-          <div className="bg-gray-50 border border-gray-200 rounded-lg p-6">
-            <h3 className="text-xl font-bold text-gray-800 mb-3">1. رموز CSRF (CSRF Tokens)</h3>
-            <p>
-              يتم إنشاء رمز فريد لكل جلسة أو طلب ويُرسل مع كل نموذج. يتحقق الخادم من صحة الرمز قبل معالجة الطلب.
-            </p>
-            <div className="bg-gray-900 text-gray-100 p-4 rounded-lg mt-4">
-              <pre className="text-sm">
-{`// توليد CSRF Token في Node.js
-const crypto = require('crypto');
+      <VulnSection title="طرق الحماية" icon="🛡️">
+        <InfoBox type="success">
+          <strong>1. رموز CSRF (CSRF Tokens)</strong> - يتم إنشاء رمز فريد لكل جلسة أو طلب ويُرسل مع كل نموذج. يتحقق الخادم من صحة الرمز قبل معالجة الطلب.
+        </InfoBox>
+        <CodeBlock title="توليد CSRF Token في Node.js" code={`const crypto = require('crypto');
 
 function generateCsrfToken() {
   return crypto.randomBytes(32).toString('hex');
@@ -178,20 +111,12 @@ function verifyCsrfToken(req, res, next) {
     return res.status(403).json({ error: 'CSRF token invalid' });
   }
   next();
-}`}
-              </pre>
-            </div>
-          </div>
+}`} />
 
-          <div className="bg-gray-50 border border-gray-200 rounded-lg p-6">
-            <h3 className="text-xl font-bold text-gray-800 mb-3">2. SameSite Cookies</h3>
-            <p>
-              تحدد الخاصية SameSite متى يتم إرسال ملفات تعريف الارتباط. القيمة &quot;Strict&quot; تمنع الإرسال في الطلبات بين المواقع.
-            </p>
-            <div className="bg-gray-900 text-gray-100 p-4 rounded-lg mt-4">
-              <pre className="text-sm">
-{`// إعداد SameSite Cookie في Node.js
-res.cookie('sessionId', sessionId, {
+        <InfoBox type="success">
+          <strong>2. SameSite Cookies</strong> - تحدد الخاصية SameSite متى يتم إرسال ملفات تعريف الارتباط. القيمة &quot;Strict&quot; تمنع الإرسال في الطلبات بين المواقع.
+        </InfoBox>
+        <CodeBlock title="إعداد SameSite Cookie في Node.js" code={`res.cookie('sessionId', sessionId, {
   httpOnly: true,
   secure: true,
   sameSite: 'strict',  // يمنع إرسال الكوكيز في الطلبات بين المواقع
@@ -200,20 +125,12 @@ res.cookie('sessionId', sessionId, {
 
 // في Python/Django
 SESSION_COOKIE_SAMESITE = 'Strict'
-CSRF_COOKIE_SAMESITE = 'Strict'`}
-              </pre>
-            </div>
-          </div>
+CSRF_COOKIE_SAMESITE = 'Strict'`} />
 
-          <div className="bg-gray-50 border border-gray-200 rounded-lg p-6">
-            <h3 className="text-xl font-bold text-gray-800 mb-3">3. التحقق من رؤوس Origin و Referer</h3>
-            <p>
-              تحقق من رؤوس HTTP للتأكد من أن الطلب قادم من مصدر موثوق.
-            </p>
-            <div className="bg-gray-900 text-gray-100 p-4 rounded-lg mt-4">
-              <pre className="text-sm">
-{`// التحقق من Origin و Referer في Node.js
-function checkOrigin(req, res, next) {
+        <InfoBox type="success">
+          <strong>3. التحقق من رؤوس Origin و Referer</strong> - تحقق من رؤوس HTTP للتأكد من أن الطلب قادم من مصدر موثوق.
+        </InfoBox>
+        <CodeBlock title="التحقق من Origin و Referer في Node.js" code={`function checkOrigin(req, res, next) {
   const origin = req.headers.origin || req.headers.referer;
   const allowedOrigins = ['https://yourdomain.com'];
   
@@ -224,96 +141,47 @@ function checkOrigin(req, res, next) {
 }
 
 // استخدام مع Express
-app.use('/api', checkOrigin, apiRoutes);`}
-              </pre>
-            </div>
-          </div>
+app.use('/api', checkOrigin, apiRoutes);`} />
 
-          <div className="bg-gray-50 border border-gray-200 rounded-lg p-6">
-            <h3 className="text-xl font-bold text-gray-800 mb-3">4. المصادقة الثنائية (2FA) للعمليات الحساسة</h3>
-            <p>
-              تتطلب المصادقة الثنائية للمعاملات المالية أو تغييرات الحساب، مما يضيف طبقة حماية إضافية.
-            </p>
-          </div>
-        </div>
-      </section>
+        <InfoBox type="success">
+          <strong>4. المصادقة الثنائية (2FA) للعمليات الحساسة</strong> - تتطلب المصادقة الثنائية للمعاملات المالية أو تغييرات الحساب، مما يضيف طبقة حماية إضافية.
+        </InfoBox>
+      </VulnSection>
 
-      <section className="mb-12">
-        <h2 className="text-3xl font-bold text-gray-900 mb-4">نصائح أمنية</h2>
-        <div className="bg-success-50 border border-success-200 rounded-lg p-6">
-          <ul className="space-y-3">
-            <li className="flex items-start gap-2">
-              <span className="text-success-600 mt-1">&#x2714;</span>
-              <span><strong>القاعدة الذهبية:</strong> استخدم CSRF Token في جميع النماذج</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-success-600 mt-1">&#x2714;</span>
-              <span>فعّل SameSite=Strict على جميع الكوكيز الحساسة</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-success-600 mt-1">&#x2714;</span>
-              <span>استخدم POST بدلاً من GET للعمليات الحساسة</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-success-600 mt-1">&#x2714;</span>
-              <span>تحقق من رؤوس Origin و Referer في الطلبات المهمة</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-success-600 mt-1">&#x2714;</span>
-              <span>أضف المصادقة الثنائية للعمليات المالية</span>
-            </li>
-          </ul>
-        </div>
-      </section>
+      <VulnSection title="نصائح أمنية" icon="💡">
+        <InfoBox type="info">
+          <strong>القاعدة الذهبية:</strong> استخدم CSRF Token في جميع النماذج
+        </InfoBox>
+        <ListItem>فعّل SameSite=Strict على جميع الكوكيز الحساسة</ListItem>
+        <ListItem>استخدم POST بدلاً من GET للعمليات الحساسة</ListItem>
+        <ListItem>تحقق من رؤوس Origin و Referer في الطلبات المهمة</ListItem>
+        <ListItem>أضف المصادقة الثنائية للعمليات المالية</ListItem>
+      </VulnSection>
 
-      <section className="mb-12">
-        <h2 className="text-3xl font-bold text-gray-900 mb-4">الأخطاء الشائعة</h2>
-        <div className="space-y-4">
-          <div className="bg-danger-50 border border-danger-200 rounded-lg p-4">
-            <h4 className="font-bold text-danger-700 mb-2">&#x274C; استخدام GET للعمليات المالية</h4>
-            <p className="text-gray-600 mb-0">طلبات GET يمكن حقنها بسهولة في صفحات مغرضة</p>
-          </div>
-          <div className="bg-danger-50 border border-danger-200 rounded-lg p-4">
-            <h4 className="font-bold text-danger-700 mb-2">&#x274C; عدم استخدام CSRF Token</h4>
-            <p className="text-gray-600 mb-0">بدون CSRF Token، النماذج معرضة للتزوير بسهولة</p>
-          </div>
-          <div className="bg-danger-50 border border-danger-200 rounded-lg p-4">
-            <h4 className="font-bold text-danger-700 mb-2">&#x274C; استخدام SameSite=None</h4>
-            <p className="text-gray-600 mb-0">يسمح بإرسال الكوكيز في الطلبات بين المواقع</p>
-          </div>
-        </div>
-      </section>
+      <VulnSection title="الأخطاء الشائعة" icon="⚠️">
+        <InfoBox type="danger">
+          <strong>❌ استخدام GET للعمليات المالية</strong> - طلبات GET يمكن حقنها بسهولة في صفحات مغرضة
+        </InfoBox>
+        <InfoBox type="danger">
+          <strong>❌ عدم استخدام CSRF Token</strong> - بدون CSRF Token، النماذج معرضة للتزوير بسهولة
+        </InfoBox>
+        <InfoBox type="danger">
+          <strong>❌ استخدام SameSite=None</strong> - يسمح بإرسال الكوكيز في الطلبات بين المواقع
+        </InfoBox>
+      </VulnSection>
 
-      <section className="mb-12">
+      <section className="mb-6">
         <LabsSection slug="csrf" />
       </section>
 
-      <section className="mb-12">
+      <section className="mb-6">
         <ToolsSection slug="csrf" />
       </section>
 
-      <section className="mb-12">
+      <section className="mb-6">
         <Quiz slug="csrf" />
         <VideoSection slug="csrf" />
       </section>
-
-      <section className="mb-12">
-        <h2 className="text-3xl font-bold text-gray-900 mb-4">الثغرات الأخرى</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <Link href="/vulnerabilities/sql-injection" className="block bg-gray-50 border border-gray-200 rounded-lg p-4 hover:shadow-md transition">
-            <span className="text-2xl">&#x1F489;</span>
-            <h4 className="font-bold mt-2">حقن SQL</h4>
-          </Link>
-          <Link href="/vulnerabilities/xss" className="block bg-gray-50 border border-gray-200 rounded-lg p-4 hover:shadow-md transition">
-            <span className="text-2xl">&#x1F4DC;</span>
-            <h4 className="font-bold mt-2">XSS</h4>
-          </Link>
-          <Link href="/vulnerabilities/ssrf" className="block bg-gray-50 border border-gray-200 rounded-lg p-4 hover:shadow-md transition">
-            <span className="text-2xl">&#x1F5A5;&#xFE0F;</span>
-            <h4 className="font-bold mt-2">SSRF</h4>
-          </Link>
-        </div>
-      </section>
-    </div>
+    </VulnerabilityLayout>
   )
 }

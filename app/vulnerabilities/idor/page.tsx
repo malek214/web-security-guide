@@ -1,141 +1,213 @@
-import Link from 'next/link'
+'use client'
+import VulnerabilityLayout, { VulnSection, CodeBlock, InfoBox, ListItem } from '@/components/VulnerabilityLayout'
 import VideoSection from '@/components/VideoSection'
 import ToolsSection from '@/components/ToolsSection'
 import LabsSection from '@/components/LabsSection'
 import Quiz from '@/components/Quiz'
 import ShareButtons from '@/components/ShareButtons'
 
-export default function IdorPage() {
+export default function IDORPage() {
   return (
-    <div className="max-w-4xl mx-auto prose prose-lg" dir="rtl">
-      <nav className="mb-8 text-sm text-gray-500">
-        <Link href="/" className="hover:text-blue-600">الرئيسية</Link>
-        <span className="mx-2">/</span>
-        <span className="text-gray-900">IDOR</span>
-      </nav>
+    <VulnerabilityLayout
+      icon="🔑"
+      titleAr="الوصول غير المصرح به للموارد"
+      titleEn="Insecure Direct Object References (IDOR)"
+      severity="high"
+      owasp="A1:2013"
+    >
+      <ShareButtons title="IDOR - الوصول غير المصرح به" url="https://web-security-guide.vercel.app/vulnerabilities/idor" />
 
-      <header className="mb-12">
-        <div className="flex items-center gap-3 mb-4">
-          <span className="text-5xl">&#x1F510;</span>
-          <div>
-            <h1 className="text-4xl font-bold text-gray-900 mb-0">مراجع كائنات مباشرة غير آمنة</h1>
-            <p className="text-xl text-gray-500 mt-1">Insecure Direct Object References (IDOR)</p>
-          </div>
-        </div>
-        <div className="bg-orange-50 border border-orange-200 rounded-lg p-4">
-          <p className="text-orange-700 font-semibold mb-0">&#x26A0; مستوى الخطورة: عالية</p>
-        </div>
-      </header>
-
-      <div className="mb-6">
-        <ShareButtons title="IDOR" url={"https://web-security-guide.vercel.app/vulnerabilities/idor"} />
-      </div>
-
-      <section className="mb-12">
-        <h2 className="text-3xl font-bold text-gray-900 mb-4">تعريف IDOR</h2>
-        <p>
-          مراجع كائنات مباشرة غير آمنة (IDOR) هي ثغرة أمنية تسمح للمهاجم بالوصول غير المصرح به
-          إلى كائنات بيانات عن طريق تعديل معرفات (IDs) في الطلبات.
+      <VulnSection title="تعريف IDOR" icon="📖">
+        <p style={{ color: '#cccccc', fontSize: '14px', lineHeight: '1.8' }}>
+          الوصول غير المصرح به للموارد (IDOR) هو ثغرة أمنية تسمح للمهاجم بالوصول إلى موارد (مثل ملفات أو بيانات) عن طريق تغيير مُعرّف الكائن في الطلب.
         </p>
-        <p>
-          على سبيل المثال، إذا كان بإمكان المستخدم الوصول إلى ملفه الشخصي عبر
-          <code>/profile?id=123</code>، يمكن للمهاجم تجربة <code>/profile?id=124</code>
-          للوصول إلى حساب مستخدم آخر.
+        <p style={{ color: '#cccccc', fontSize: '14px', lineHeight: '1.8', marginTop: '8px' }}>
+          تحدث الثغرة عندما يعتمد التطبيق على مُعرّفات المستخدم مباشرة في الطلبات دون التحقق من الصلاحيات.
         </p>
-      </section>
+      </VulnSection>
 
-      <section className="mb-12">
-        <h2 className="text-3xl font-bold text-gray-900 mb-4">أنواع IDOR</h2>
-        <div className="space-y-4">
-          <div className="bg-gray-50 border border-gray-200 rounded-lg p-6">
-            <h3 className="text-xl font-bold text-gray-800 mb-3">1. أفقي (Horizontal IDOR)</h3>
-            <p>الوصول لحسابات مستخدمين آخرين بنفس المستوى الصلاحيات.</p>
-          </div>
-          <div className="bg-gray-50 border border-gray-200 rounded-lg p-6">
-            <h3 className="text-xl font-bold text-gray-800 mb-3">2. عمودي (Vertical IDOR)</h3>
-            <p>الوصول لحسابات بصلاحيات أعلى (مثل الوصول للوحة الإدارة).</p>
-          </div>
-        </div>
-      </section>
+      <VulnSection title="كيف يعمل IDOR" icon="🔍">
+        <InfoBox type="info">
+          <strong>آلية العمل:</strong>
+        </InfoBox>
+        <ListItem>يلogue المستخدم إلى حسابه</ListItem>
+        <ListItem>يقوم بطلب ملف خاص (مثل /download?file=123)</ListItem>
+        <ListItem>يكتشف المهاجم أن المُعرّف يعتمد على رقم تسلسلي</ListItem>
+        <ListItem>يقوم بتغيير المُعرّف للوصول لملفات المستخدمين الآخرين</ListItem>
+      </VulnSection>
 
-      <section className="mb-12">
-        <h2 className="text-3xl font-bold text-gray-900 mb-4">أمثلة على الكود</h2>
+      <VulnSection title="أنواع IDOR" icon="🔍">
+        <InfoBox type="warning">
+          <strong>1. IDOR في URL</strong> - تغيير المُعرّف في عنوان URL
+        </InfoBox>
+        <CodeBlock title="مثال على IDOR في URL" code={`// طلب المستخدم الأول
+GET /profile?id=123
 
-        <div className="bg-red-50 border border-red-200 rounded-lg p-6 mb-6">
-          <h3 className="text-xl font-bold text-red-700 mb-3">&#x274C; كود مصاب</h3>
-          <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg text-sm">
-{`// Express.js - كود مصاب
-app.get('/api/invoice/:id', (req, res) => {
-  const invoice = db.invoices.findById(req.params.id);
-  // لا يوجد تحقق من صاحب الفاتورة!
-  res.json(invoice);
-});
+// المهاجم يغير المُعرّف
+GET /profile?id=456
 
-// المهاجم يغير ID: /api/invoice/124 بدلاً من 123`}
-          </pre>
-        </div>
+// النتيجة: عرض ملف تعريف المستخدم 456`} />
 
-        <div className="bg-green-50 border border-green-200 rounded-lg p-6 mb-6">
-          <h3 className="text-xl font-bold text-green-700 mb-3">&#x2705; كود محصن</h3>
-          <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg text-sm">
-{`// Express.js - كود محصن
-app.get('/api/invoice/:id', authenticate, (req, res) => {
-  const invoice = db.invoices.findById(req.params.id);
-  
-  // تحقق من أن الفاتورة تنتمي للمستخدم الحالي
-  if (invoice.userId !== req.user.id) {
-    return res.status(403).json({ error: 'Forbidden' });
+        <InfoBox type="warning">
+          <strong>2. IDOR في POST data</strong> - تغيير المُعرّف في بيانات الطلب
+        </InfoBox>
+        <CodeBlock title="مثال على IDOR في POST" code={`// نموذج تعديل الملف الشخصي
+POST /profile/update
+user_id=123&name=John
+
+// المهاجم يغير المُعرّف
+POST /profile/update
+user_id=456&name=Hacker
+
+// النتيجة: تعديل ملف تعريف المستخدم 456`} />
+
+        <InfoBox type="danger">
+          <strong>3. IDOR في API</strong> - تغيير المُعرّف في واجهات برمجة التطبيقات
+        </InfoBox>
+        <CodeBlock title="مثال على IDOR في API" code={`// API endpoint
+GET /api/users/123/documents
+
+// المهاجم يغير المُعرّف
+GET /api/users/456/documents
+
+// النتيجة: عرض مستندات المستخدم 456`} />
+      </VulnSection>
+
+      <VulnSection title="أمثلة على الهجمات" icon="💻">
+        <CodeBlock title="1. سرقة بيانات المستخدمين" code={`// سرقة الملفات الشخصية
+GET /api/user/456/profile
+
+// سرقة المستندات
+GET /api/user/456/documents
+
+// سرقة المعاملات المالية
+GET /api/user/456/transactions`} />
+
+        <CodeBlock title="2. تعديل البيانات" code={`// تعديل الملف الشخصي
+PUT /api/user/456
+{"name": "Hacker", "email": "hacker@evil.com"}
+
+// تغيير كلمة المرور
+POST /api/user/456/password
+{"password": "newpassword123"}`} />
+
+        <CodeBlock title="3. حذف البيانات" code={`// حذف الملف الشخصي
+DELETE /api/user/456
+
+// حذف المستندات
+DELETE /api/user/456/documents/789`} />
+      </VulnSection>
+
+      <VulnSection title="أمثلة كود مصاب ومحصن" icon="💻">
+        <CodeBlock title="❌ كود مصاب" variant="vulnerable" code={`// PHP - كود مصاب
+$user_id = $_GET['id'];
+$query = "SELECT * FROM users WHERE id = $user_id";
+$result = mysqli_query($conn, $query);
+
+// Python - كود مصاب
+user_id = request.args.get('id')
+user = User.query.get(user_id)
+
+// Node.js - كود مصاب
+app.get('/user/:id', (req, res) => {
+  const user = await User.findById(req.params.id);
+  res.json(user);
+});`} />
+
+        <CodeBlock title="✅ كود محصن" variant="secure" code={`// PHP - كود محصن
+$user_id = $_GET['id'];
+// التحقق من أن المستخدم يطلب بياناته فقط
+if ($user_id != $_SESSION['user_id']) {
+  die('Unauthorized');
+}
+$query = "SELECT * FROM users WHERE id = ?";
+$stmt = $conn->prepare($query);
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+
+// Python - كود محصن
+user_id = request.args.get('id')
+if int(user_id) != current_user.id:
+    return 'Unauthorized', 403
+user = User.query.get(user_id)
+
+// Node.js - كود محصن
+app.get('/user/:id', authenticate, (req, res) => {
+  if (req.params.id !== req.user.id) {
+    return res.status(403).send('Unauthorized');
   }
-  
-  res.json(invoice);
-});
+  const user = await User.findById(req.params.id);
+  res.json(user);
+});`} />
+      </VulnSection>
 
-// استخدام UUID بدلاً من IDs التسلسلي
-// /api/invoice/a1b2c3d4-e5f6-7890-abcd-ef1234567890`}
-          </pre>
-        </div>
+      <VulnSection title="طرق الحماية" icon="🛡️">
+        <InfoBox type="success">
+          <strong>1. التحقق من الصلاحيات</strong> - تأكد من أن المستخدم مصرح له بالوصول للمورد
+        </InfoBox>
+        <ListItem>تحقق من أن المستخدم يطلب بياناته فقط</ListItem>
+        <li>استخدم مُعرّفات غير قابلة للتخمين (UUIDs)</li>
+        <li>طبّق سياسة الوصول القليل (Least Privilege)</li>
+
+        <InfoBox type="success">
+          <strong>2. استخدام مُعرّفات غير تسلسلية</strong> - استخدم UUIDs بدلاً من الأرقام التسلسلية
+        </InfoBox>
+        <CodeBlock title="مثال على استخدام UUIDs" code={`// بدلاً من:
+GET /api/users/123
+
+// استخدم:
+GET /api/users/550e8400-e29b-41d4-a716-446655440000
+
+// UUID عشوائي ويصعب تخمينه`} />
+
+        <InfoBox type="success">
+          <strong>3. استخدام أنماط آمنة</strong> - استخدم أنماط مثل /api/me بدلاً من /api/users/:id
+        </InfoBox>
+        <CodeBlock title="مثال على الأنماط الآمنة" code={`// بدلاً من:
+GET /api/users/123/documents
+
+// استخدم:
+GET /api/me/documents
+
+// أو
+GET /api/current-user/documents`} />
+      </VulnSection>
+
+      <VulnSection title="نصائح أمنية" icon="💡">
+        <InfoBox type="info">
+          <strong>القاعدة الذهبية:</strong> تحقق دائماً من صلاحيات المستخدم قبل الوصول للموارد
+        </InfoBox>
+        <ListItem>لا تعتمد على مُعرّفات تسلسلية يمكن تخمينها</ListItem>
+        <ListItem>تحقق من الصلاحيات في كل طلب</ListItem>
+        <ListItem>استخدم UUIDs للمُعرّفات</ListItem>
+        <ListItem>طبّق سياسة الوصول القليل</ListItem>
+        <ListItem>راجع الكود بحثاً عن استخدامات مُعرّفات المستخدم مباشرة</ListItem>
+      </VulnSection>
+
+      <VulnSection title="الأخطاء الشائعة" icon="⚠️">
+        <InfoBox type="danger">
+          <strong>❌ استخدام أرقام تسلسلية للمُعرّفات</strong> - يمكن تخمينها بسهولة
+        </InfoBox>
+        <InfoBox type="danger">
+          <strong>❌ عدم التحقق من الصلاحيات</strong> - أي مستخدم يمكنه الوصول لأي مورد
+        </InfoBox>
+        <InfoBox type="danger">
+          <strong>❌ الاعتماد على المُعرّف فقط للتحقق</strong> - المُعرّف ليس دليلاً على الصلاحيات
+        </InfoBox>
+      </VulnSection>
+
+      <section className="mb-6">
+        <LabsSection slug="idor" />
       </section>
 
-      <section className="mb-12">
-        <h2 className="text-3xl font-bold text-gray-900 mb-4">طرق الحماية</h2>
-        <div className="space-y-4">
-          <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
-            <h4 className="font-bold text-gray-800 mb-2">1. تحقق من الصلاحيات دائماً</h4>
-            <p className="text-gray-600 mb-0">تأكد من أن المستخدم مخول للوصول لكل كائن يطلبه</p>
-          </div>
-          <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
-            <h4 className="font-bold text-gray-800 mb-2">2. استخدم UUID بدلاً من IDs</h4>
-            <p className="text-gray-600 mb-0">المعرفات العشوائية أصعب في التخمين</p>
-          </div>
-          <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
-            <h4 className="font-bold text-gray-800 mb-2">3. استخدم مراجع غير مباشرة</h4>
-            <p className="text-gray-600 mb-0">اربط الكائنات بجلسة المستخدم بدلاً من المعاملات</p>
-          </div>
-        </div>
+      <section className="mb-6">
+        <ToolsSection slug="idor" />
       </section>
 
-      <section className="mb-12">
-        <h2 className="text-3xl font-bold text-gray-900 mb-4">الثغرات الأخرى</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <Link href="/vulnerabilities/broken-access-control" className="block bg-gray-50 border border-gray-200 rounded-lg p-4 hover:shadow-md transition">
-            <span className="text-2xl">&#x1F6AB;</span>
-            <h4 className="font-bold mt-2">خطأ في التحكم بالوصول</h4>
-          </Link>
-          <Link href="/vulnerabilities/sql-injection" className="block bg-gray-50 border border-gray-200 rounded-lg p-4 hover:shadow-md transition">
-            <span className="text-2xl">&#x1F489;</span>
-            <h4 className="font-bold mt-2">حقن SQL</h4>
-          </Link>
-          <Link href="/vulnerabilities/xss" className="block bg-gray-50 border border-gray-200 rounded-lg p-4 hover:shadow-md transition">
-            <span className="text-2xl">&#x1F4DC;</span>
-            <h4 className="font-bold mt-2">XSS</h4>
-          </Link>
-        </div>
+      <section className="mb-6">
+        <Quiz slug="idor" />
+        <VideoSection slug="idor" />
       </section>
-
-      <LabsSection slug="idor" />
-      <ToolsSection slug="idor" />
-      <Quiz slug="idor" />
-      <VideoSection slug="idor" />
-    </div>
+    </VulnerabilityLayout>
   )
 }
