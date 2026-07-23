@@ -9,6 +9,9 @@ export default function ScannerPage() {
   const [results, setResults] = useState<any>(null)
   const [expandedVulns, setExpandedVulns] = useState<Set<number>>(new Set())
   const [error, setError] = useState('')
+  const [progress, setProgress] = useState(0)
+  const [currentTest, setCurrentTest] = useState('')
+  const [testResults, setTestResults] = useState<any[]>([])
 
   const toggleVuln = (index: number) => {
     setExpandedVulns(prev => {
@@ -44,6 +47,34 @@ export default function ScannerPage() {
     setError('')
     setResults(null)
     setExpandedVulns(new Set())
+    setProgress(0)
+    setCurrentTest('')
+    setTestResults([])
+
+    // Simulate progress while API is running
+    const tests = [
+      'تحليل الرؤوس',
+      'اختبار SQL Injection',
+      'اختبار XSS',
+      'اختبار LFI',
+      'اختبار Open Redirect',
+      'اختبار Command Injection',
+      'اختبار CORS',
+      'اختبار SSRF',
+    ]
+
+    let progressInterval: NodeJS.Timeout
+    let testIndex = 0
+
+    // Start progress animation
+    progressInterval = setInterval(() => {
+      if (testIndex < tests.length) {
+        setCurrentTest(tests[testIndex])
+        setProgress(Math.min(((testIndex + 1) / tests.length) * 90, 90))
+        setTestResults(prev => [...prev, { name: tests[testIndex], status: 'running' }])
+        testIndex++
+      }
+    }, 1200)
 
     try {
       const response = await fetch('/api/scan', {
@@ -54,14 +85,22 @@ export default function ScannerPage() {
 
       const data = await response.json()
       
-      if (!response.ok) {
-        setError(data.error || 'حدث خطأ أثناء الفحص')
-      } else {
-        setResults(data)
-      }
+      clearInterval(progressInterval)
+      setProgress(100)
+      setCurrentTest('اكتمل الفحص')
+      
+      setTimeout(() => {
+        if (!response.ok) {
+          setError(data.error || 'حدث خطأ أثناء الفحص')
+        } else {
+          setResults(data)
+        }
+        setScanning(false)
+      }, 500)
+
     } catch (err) {
+      clearInterval(progressInterval)
       setError('حدث خطأ في الاتصال بالخادم')
-    } finally {
       setScanning(false)
     }
   }
@@ -81,14 +120,14 @@ export default function ScannerPage() {
             أداة فحص الثغرات
           </h1>
           <p style={{ color: '#7d8590', fontSize: '14px' }} className="mt-2">
-            أدخل رابط الموقع لفحصه واكتشاف الثغرات المحتملة
+            فحص حقيقي للموقع - يختبر ثغرات حقيقية ويعرض النتائج
           </p>
         </div>
       </div>
 
       <div className="max-w-5xl mx-auto p-6">
         {/* URL Input */}
-        <div className="gradient-border p-6 mb-8">
+        <div className="gradient-border p-6 mb-6">
           <div className="code-devtools">
             <div className="code-devtools-header">
               <div className="flex items-center gap-2">
@@ -96,7 +135,7 @@ export default function ScannerPage() {
                 <div className="code-devtools-dot" style={{ background: '#d29922' }}></div>
                 <div className="code-devtools-dot" style={{ background: '#3fb950' }}></div>
               </div>
-              <span style={{ color: '#7d8590', fontSize: '11px' }}>Vulnerability Scanner</span>
+              <span style={{ color: '#7d8590', fontSize: '11px' }}>Vulnerability Scanner - Real Scan</span>
             </div>
             <div className="code-devtools-body">
               <div className="flex items-center gap-3">
@@ -110,18 +149,65 @@ export default function ScannerPage() {
                   style={{ color: '#e6edf3', fontSize: '14px', fontFamily: 'inherit' }}
                   dir="ltr"
                   onKeyPress={(e) => e.key === 'Enter' && handleScan()}
+                  disabled={scanning}
                 />
                 <button
                   onClick={handleScan}
                   className="btn-premium"
-                  disabled={scanning}
+                  disabled={scanning || !url}
                 >
-                  {scanning ? 'جاري الفحص...' : '🔍 فحص'}
+                  {scanning ? 'جاري الفحص...' : '🔍 فحص حقيقي'}
                 </button>
               </div>
             </div>
           </div>
         </div>
+
+        {/* Progress Bar */}
+        {scanning && (
+          <div className="gradient-border p-6 mb-6">
+            <div className="flex items-center justify-between mb-3">
+              <div className="flex items-center gap-3">
+                <div className="w-3 h-3 rounded-full animate-pulse" style={{ background: '#58a6ff' }}></div>
+                <span style={{ color: '#e6edf3', fontSize: '14px', fontWeight: 'bold' }}>جاري الفحص...</span>
+              </div>
+              <span style={{ color: '#58a6ff', fontSize: '14px', fontWeight: 'bold' }}>{Math.round(progress)}%</span>
+            </div>
+            
+            {/* Progress Bar */}
+            <div className="w-full h-2 rounded-full mb-4" style={{ background: '#21262d' }}>
+              <div 
+                className="h-full rounded-full transition-all duration-300"
+                style={{ 
+                  width: `${progress}%`, 
+                  background: 'linear-gradient(90deg, #58a6ff 0%, #bc8cff 50%, #f778ba 100%)'
+                }}
+              ></div>
+            </div>
+
+            {/* Current Test */}
+            <div className="flex items-center gap-2 mb-4">
+              <span style={{ color: '#7d8590', fontSize: '12px' }}>الاختبار الحالي:</span>
+              <span style={{ color: '#e6edf3', fontSize: '12px', fontWeight: 'bold' }}>{currentTest}</span>
+            </div>
+
+            {/* Test Results */}
+            <div className="space-y-2">
+              {testResults.map((test, i) => (
+                <div key={i} className="flex items-center gap-3 p-2 rounded" style={{ background: '#0d1117' }}>
+                  <div className="w-2 h-2 rounded-full" style={{ 
+                    background: i < testResults.length - 1 ? '#3fb950' : '#58a6ff',
+                    animation: i === testResults.length - 1 ? 'pulse 1s infinite' : 'none'
+                  }}></div>
+                  <span style={{ color: '#7d8590', fontSize: '12px' }}>{test.name}</span>
+                  {i < testResults.length - 1 && (
+                    <span style={{ color: '#3fb950', fontSize: '11px', marginRight: 'auto' }}>✓</span>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Error */}
         {error && (
@@ -130,19 +216,6 @@ export default function ScannerPage() {
               <span className="text-xl">⚠️</span>
               <p style={{ color: '#f85149', fontSize: '14px' }}>{error}</p>
             </div>
-          </div>
-        )}
-
-        {/* Scanning Animation */}
-        {scanning && (
-          <div className="text-center py-16">
-            <div className="inline-flex items-center gap-3 mb-4">
-              <div className="w-4 h-4 rounded-full animate-pulse" style={{ background: '#58a6ff' }}></div>
-              <div className="w-4 h-4 rounded-full animate-pulse" style={{ background: '#bc8cff', animationDelay: '0.2s' }}></div>
-              <div className="w-4 h-4 rounded-full animate-pulse" style={{ background: '#f778ba', animationDelay: '0.4s' }}></div>
-            </div>
-            <p style={{ color: '#e6edf3', fontSize: '16px', fontWeight: 'bold' }}>جاري فحص الموقع...</p>
-            <p style={{ color: '#7d8590', fontSize: '13px', marginTop: '8px' }}>تحليل الرؤوس والتقنيات والثغرات المحتملة</p>
           </div>
         )}
 
@@ -161,35 +234,28 @@ export default function ScannerPage() {
                     <p style={{ color: '#7d8590', fontSize: '12px', direction: 'ltr' }}>{results.url}</p>
                   </div>
                 </div>
-                {results.statusCode && (
-                  <span className={`severity-${results.statusCode < 400 ? 'low' : 'high'}`}>
-                    {results.statusCode}
-                  </span>
-                )}
-              </div>
-
-              {/* Technologies */}
-              {results.technologies?.length > 0 && (
-                <div className="mb-4">
-                  <h4 style={{ color: '#58a6ff', fontSize: '12px', fontWeight: 'bold', marginBottom: '8px' }}>التقنيات المكتشفة</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {results.technologies.map((tech: string) => (
-                      <span key={tech} className="severity-info">{tech}</span>
-                    ))}
-                  </div>
+                <div className="text-left">
+                  {results.statusCode && (
+                    <span className={`severity-${results.statusCode < 400 ? 'low' : 'high'}`}>
+                      {results.statusCode}
+                    </span>
+                  )}
+                  {results.duration && (
+                    <p style={{ color: '#7d8590', fontSize: '11px', marginTop: '4px' }}>{results.duration} ثانية</p>
+                  )}
                 </div>
-              )}
+              </div>
 
               {/* Headers */}
               {Object.keys(results.headers || {}).length > 0 && (
                 <div>
                   <h4 style={{ color: '#58a6ff', fontSize: '12px', fontWeight: 'bold', marginBottom: '8px' }}>رؤوس HTTP</h4>
                   <div className="code-devtools">
-                    <div className="code-devtools-body" style={{ maxHeight: '200px', overflow: 'auto' }}>
-                      {Object.entries(results.headers).map(([key, value]) => (
+                    <div className="code-devtools-body" style={{ maxHeight: '150px', overflow: 'auto' }}>
+                      {Object.entries(results.headers).slice(0, 10).map(([key, value]) => (
                         <div key={key} className="flex gap-2 mb-1" style={{ fontSize: '11px' }}>
                           <span style={{ color: '#7d8590' }}>{key}:</span>
-                          <span style={{ color: '#a5d6ff', direction: 'ltr' }}>{String(value)}</span>
+                          <span style={{ color: '#a5d6ff', direction: 'ltr' }}>{String(value).substring(0, 80)}</span>
                         </div>
                       ))}
                     </div>
@@ -199,7 +265,7 @@ export default function ScannerPage() {
             </div>
 
             {/* Findings Summary */}
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-4 gap-4">
               <div className="gradient-border p-4 text-center">
                 <div className="text-3xl mb-2" style={{ 
                   background: 'linear-gradient(135deg, #f85149 0%, #d29922 100%)',
@@ -224,6 +290,14 @@ export default function ScannerPage() {
                 }}>{results.findings?.filter((f: any) => f.severity === 'medium').length || 0}</div>
                 <div style={{ color: '#7d8590', fontSize: '11px', fontWeight: '600' }}>متوسطة</div>
               </div>
+              <div className="gradient-border p-4 text-center">
+                <div className="text-3xl mb-2" style={{ 
+                  background: 'linear-gradient(135deg, #3fb950 0%, #39d2c0 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent'
+                }}>{results.findings?.length || 0}</div>
+                <div style={{ color: '#7d8590', fontSize: '11px', fontWeight: '600' }}>الإجمالي</div>
+              </div>
             </div>
 
             {/* Vulnerability List */}
@@ -235,7 +309,7 @@ export default function ScannerPage() {
                     توسيع الكل
                   </button>
                   <button onClick={collapseAll} className="btn-ghost" style={{ fontSize: '11px', padding: '4px 12px' }}>
-                   طي الكل
+                    طي الكل
                   </button>
                 </div>
               </div>
@@ -260,6 +334,9 @@ export default function ScannerPage() {
                       </div>
                       <div className="flex items-center gap-3">
                         <span className={`severity-${vuln.severity}`}>{vuln.severity.toUpperCase()}</span>
+                        {vuln.evidence && (
+                          <span className="severity-critical" style={{ fontSize: '9px' }}>مكتشف</span>
+                        )}
                         <span style={{ color: '#7d8590', fontSize: '12px', transition: 'transform 0.2s', transform: isExpanded ? 'rotate(90deg)' : 'rotate(0deg)' }}>▶</span>
                       </div>
                     </div>
@@ -268,6 +345,14 @@ export default function ScannerPage() {
                   {/* Expanded Content */}
                   {isExpanded && (
                     <div className="p-4" style={{ background: '#0d1117', borderTop: '1px solid #30363d' }}>
+                      {/* Evidence */}
+                      {vuln.evidence && (
+                        <div className="mb-4 p-3 rounded-lg" style={{ background: 'rgba(248, 81, 73, 0.1)', border: '1px solid rgba(248, 81, 73, 0.3)' }}>
+                          <h5 style={{ color: '#f85149', fontSize: '12px', fontWeight: 'bold', marginBottom: '4px' }}>⚠️ الدليل</h5>
+                          <p style={{ color: '#f85149', fontSize: '12px' }}>{vuln.evidence}</p>
+                        </div>
+                      )}
+
                       {/* Description */}
                       <div className="mb-4">
                         <h5 style={{ color: '#58a6ff', fontSize: '12px', fontWeight: 'bold', marginBottom: '8px' }}>📝 الوصف</h5>
@@ -351,9 +436,9 @@ export default function ScannerPage() {
         {!results && !scanning && !error && (
           <div className="text-center py-16">
             <span className="text-6xl mb-4 block">🔍</span>
-            <h3 style={{ color: '#e6edf3', fontSize: '18px', fontWeight: 'bold', marginBottom: '8px' }}>أدخل رابط الموقع</h3>
+            <h3 style={{ color: '#e6edf3', fontSize: '18px', fontWeight: 'bold', marginBottom: '8px' }}>فحص حقيقي للموقع</h3>
             <p style={{ color: '#7d8590', fontSize: '14px', maxWidth: '500px', margin: '0 auto', lineHeight: '1.8' }}>
-              أدخل رابط الموقع الذي تريد فحصه وسنقوم بتحليله واكتشاف الثغرات المحتملة مع عرض طرق التشغيل والفيديوهات التعليمية
+              يختبر الموقع فعلياً لاكتشاف الثغرات الحقيقية ويعطيك النتائج مع طرق التشغيل والفيديوهات
             </p>
             <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto">
               <div className="gradient-border p-3 text-center">
@@ -365,8 +450,8 @@ export default function ScannerPage() {
                 <span style={{ color: '#7d8590', fontSize: '11px' }}>XSS</span>
               </div>
               <div className="gradient-border p-3 text-center">
-                <span className="text-2xl block mb-2">🎣</span>
-                <span style={{ color: '#7d8590', fontSize: '11px' }}>CSRF</span>
+                <span className="text-2xl block mb-2">📁</span>
+                <span style={{ color: '#7d8590', fontSize: '11px' }}>LFI</span>
               </div>
               <div className="gradient-border p-3 text-center">
                 <span className="text-2xl block mb-2">⌨️</span>
