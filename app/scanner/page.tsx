@@ -7,8 +7,30 @@ export default function ScannerPage() {
   const [url, setUrl] = useState('')
   const [scanning, setScanning] = useState(false)
   const [results, setResults] = useState<any>(null)
-  const [selectedVuln, setSelectedVuln] = useState<string | null>(null)
+  const [expandedVulns, setExpandedVulns] = useState<Set<number>>(new Set())
   const [error, setError] = useState('')
+
+  const toggleVuln = (index: number) => {
+    setExpandedVulns(prev => {
+      const next = new Set(prev)
+      if (next.has(index)) {
+        next.delete(index)
+      } else {
+        next.add(index)
+      }
+      return next
+    })
+  }
+
+  const expandAll = () => {
+    if (results?.findings) {
+      setExpandedVulns(new Set(results.findings.map((_: any, i: number) => i)))
+    }
+  }
+
+  const collapseAll = () => {
+    setExpandedVulns(new Set())
+  }
 
   const handleScan = async () => {
     if (!url) return
@@ -21,7 +43,7 @@ export default function ScannerPage() {
     setScanning(true)
     setError('')
     setResults(null)
-    setSelectedVuln(null)
+    setExpandedVulns(new Set())
 
     try {
       const response = await fetch('/api/scan', {
@@ -206,14 +228,26 @@ export default function ScannerPage() {
 
             {/* Vulnerability List */}
             <div className="space-y-3">
-              <h3 style={{ color: '#e6edf3', fontSize: '16px', fontWeight: 'bold' }}>الثغرات المحتملة</h3>
+              <div className="flex items-center justify-between mb-4">
+                <h3 style={{ color: '#e6edf3', fontSize: '16px', fontWeight: 'bold' }}>الثغرات المحتملة</h3>
+                <div className="flex gap-2">
+                  <button onClick={expandAll} className="btn-ghost" style={{ fontSize: '11px', padding: '4px 12px' }}>
+                    توسيع الكل
+                  </button>
+                  <button onClick={collapseAll} className="btn-ghost" style={{ fontSize: '11px', padding: '4px 12px' }}>
+                   طي الكل
+                  </button>
+                </div>
+              </div>
               
-              {results.findings?.map((vuln: any, index: number) => (
+              {results.findings?.map((vuln: any, index: number) => {
+                const isExpanded = expandedVulns.has(index)
+                return (
                 <div key={index} className="gradient-border overflow-hidden">
                   {/* Vuln Header */}
                   <div 
                     className="p-4 cursor-pointer transition-all hover:bg-[rgba(88,166,255,0.05)]"
-                    onClick={() => setSelectedVuln(selectedVuln === `${index}` ? null : `${index}`)}
+                    onClick={() => toggleVuln(index)}
                     style={{ background: '#161b22' }}
                   >
                     <div className="flex items-center justify-between">
@@ -226,13 +260,13 @@ export default function ScannerPage() {
                       </div>
                       <div className="flex items-center gap-3">
                         <span className={`severity-${vuln.severity}`}>{vuln.severity.toUpperCase()}</span>
-                        <span style={{ color: '#7d8590', fontSize: '12px' }}>{selectedVuln === `${index}` ? '▼' : '▶'}</span>
+                        <span style={{ color: '#7d8590', fontSize: '12px', transition: 'transform 0.2s', transform: isExpanded ? 'rotate(90deg)' : 'rotate(0deg)' }}>▶</span>
                       </div>
                     </div>
                   </div>
 
                   {/* Expanded Content */}
-                  {selectedVuln === `${index}` && (
+                  {isExpanded && (
                     <div className="p-4" style={{ background: '#0d1117', borderTop: '1px solid #30363d' }}>
                       {/* Description */}
                       <div className="mb-4">
@@ -307,7 +341,8 @@ export default function ScannerPage() {
                     </div>
                   )}
                 </div>
-              ))}
+              )
+              })}
             </div>
           </div>
         )}
